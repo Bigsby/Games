@@ -1,0 +1,70 @@
+{
+    "packs": [
+        {
+            "name": "Starter Pack"
+        },
+        {
+            "name": "Challenge Pack"
+        },
+        {
+            "name": "Bonus Pack"
+        },
+        {
+            "name": "Classic Pack"
+        },
+        {
+            "name": "Classic Pack 2"
+        },
+        {
+            "name": "Blue Pack"
+        },
+        {
+            "name": "6x6 Mania"
+        },
+        {
+            "name": "7x7 Mania"
+        },
+        {
+            "name": "8x8 Mania"
+        },
+        {
+            "name": "9x9 Mania"
+        },
+        {
+            "name": "10x10 Mania"
+        },
+        {
+            "name": "11x11 Mania"
+        },
+        {
+            "name": "12x12 Mania"
+        },
+        {
+            "name": "13x13 Mania"
+        },
+        {
+            "name": "14x14 Mania"
+        },
+        {
+            "name": "15x15 Mania"
+        },
+        {
+            "name": "Rainbow Pack"
+        },
+        {
+            "name": "Interval Pack"
+        },
+        {
+            "name": "Extreme Pack"
+        },
+        {
+            "name": "Extreme Pack 2"
+        },
+        {
+            "name": "Jumbo Pack"
+        },
+        {
+            "name": "Kids Pack"
+        }
+    ]
+}

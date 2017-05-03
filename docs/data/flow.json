@@ -1,5 +1,108 @@
 {
-    "packs":[
-        
+    "packs": [
+        {
+            "name": "Regular Pack",
+            "sections":[
+                {
+                    "name": "5x5",
+                    "levels":[
+                        {
+                            "number": 1,
+                            "flows": 5
+                        },
+                        {
+                            "number": 2,
+                            "flows": 4
+                        },
+                        {
+                            "number": 3,
+                            "flows": 5
+                        },
+                        {
+                            "number": 4,
+                            "flows": 4
+                        }
+                    ]
+                },
+                {
+                    "name": "6x6"
+                },
+                {
+                    "name": "7x7"
+                },
+                {
+                    "name": "8x8"
+                },
+                {
+                    "name": "9x9"
+                }
+            ]
+        },
+        {
+            "name": "Bonus Pack"
+        },
+        {
+            "name": "Green Pack"
+        },
+        {
+            "name": "Blue Pack"
+        },
+        {
+            "name": "Bridges Sampler"
+        },
+        {
+            "name": "6x6 Mania"
+        },
+        {
+            "name": "7x7 Mania"
+        },
+        {
+            "name": "8x8 Mania"
+        },
+        {
+            "name": "9x9 Mania"
+        },
+        {
+            "name": "10x10 Mania"
+        },
+        {
+            "name": "11x11 Mania"
+        },
+        {
+            "name": "12x12 Mania"
+        },
+        {
+            "name": "13x13 Mania"
+        },
+        {
+            "name": "14x14 Mania"
+        },
+        {
+            "name": "15x15 Mania"
+        },
+        {
+            "name": "Rainbow Pack"
+        },
+        {
+            "name": "Interval Pack"
+        },
+        {
+            "name": "Extreme Pack"
+        },
+        {
+            "name": "Extreme Pack 2"
+        },
+        {
+            "name": "Jumbo Pack"
+        },
+        {
+            "name": "Purple Pack"
+        },
+        {
+            "name": "Pink Pack"
+        },
+        {
+            "name": "Kids Pack"
+        }
     ]
 }
