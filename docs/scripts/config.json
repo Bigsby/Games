@@ -1,0 +1,9 @@
+{
+    "useRouting": true,
+    "initialData": [
+        "games"
+    ],
+    "metadata":{
+        "titlePrefix": "Games"
+    }
+}

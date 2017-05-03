@@ -1,0 +1,18 @@
+[
+    {
+        "id": "flow",
+        "name": "Flow Free",
+        "logo": "https://lh3.googleusercontent.com/lPQYdn_kgUWXu1dqhXE5sWTFHMhfoS8tGqCIjfYZl3j2lGtRihkBpLbB5-nBCd1MCQ=w300-rw",
+        "stores": {
+            "google": "https://play.google.com/store/apps/details?id=com.bigduckgames.flow&hl=en"
+        }
+    },
+    {
+        "id": "bridges",
+        "name": "Flow Free: Bridges",
+        "logo": "https://lh3.googleusercontent.com/JtvplzcFWv4ZNcfu5BvXV6v7Jiv0D8wUBoR_ocuhvBea1DJxJU6SNf1UmuOCLZktNSQ=w300-rw",
+        "stores": {
+            "google": "https://play.google.com/store/apps/details?id=com.bigduckgames.flowbridges&hl=en"
+        }
+    }
+]

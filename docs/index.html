@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Games - Bigsby</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="base/styles/coreStyles.css" />
+</head>
+
+<body>
+    <header ui-sref="home">
+        <h1>Games</h1>
+		<h4>Me and Casual Games</h4>
+    </header>
+    <section class="content">
+        <section class="innerContent">
+            <ui-view>
+                <div class="loaderContainer">
+                    <div class="loader"></div>
+                </div>
+            </ui-view>
+        </section>
+    </section>
+    <footer>
+        <span class="copy">&copy; 2017 Bigsby</span>
+        <a class="link" target="_blank" href="http://bigsbyspot.org">about the author</a>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.10/system.js"></script>
+    <script src="base/scripts/bootstrap.js"></script>
+</body>
+
+</html>
