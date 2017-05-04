@@ -1,0 +1,63 @@
+﻿<Window x:Class="ImageProcessor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="800">
+    <Grid>
+        <Button Content="Sign in" Visibility="{Binding SignButtonVisibility, Mode=Oneway}"  Command="{Binding SignIn, Mode=OneTime}"/>
+        <Grid Visibility="{Binding FormVisibility, Mode=Oneway}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Game"/>
+            <TextBlock Grid.Column="1" Text="Pack"/>
+            <TextBlock Grid.Column="2" Text="Section"/>
+            <TextBlock Grid.Column="3" Text="Level"/>
+            <ComboBox Grid.Row="1" ItemsSource="{Binding Games}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedGame}"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SelectedGame.Packs}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedPack}"/>
+            <ComboBox Grid.Row="1" Grid.Column="2" ItemsSource="{Binding SelectedPack.Sections}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedSection}"/>
+            <ComboBox Grid.Row="1" Grid.Column="3" ItemsSource="{Binding SelectedSection.Levels}" DisplayMemberPath="Number" SelectedItem="{Binding SelectedLevel}"/>
+
+            <Image Grid.Row="2" Source="{Binding ImageOriginal, IsAsync=True, Mode=Oneway}" />
+            <Image Grid.Row="2" Grid.Column="1" Source="{Binding ImageCropped, IsAsync=True, Mode=Oneway}" />
+            <Grid Grid.Row="2" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding SelectedLevel.Number, StringFormat=Level {0}, Mode=Oneway}"/>
+                <TextBlock Grid.Row="1" Text="Flows:"/>
+                <TextBox Grid.Row="2" Text="{Binding SelectedLevel.Flows}"/>
+                <TextBlock Grid.Row="3" Text="Bridges:"/>
+                <TextBox Grid.Row="4" Text="{Binding SelectedLevel.Bridges}"/>
+            </Grid>
+            <Grid Grid.Column="3" Grid.Row="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Content="Move To Other" Command="{Binding MoveToOther}"/>
+                <Button Grid.Row="1" Content="Save"/>
+            </Grid>
+            <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Previous" IsEnabled="{Binding IsPreviousEnabled}" Command="{Binding Previous}"/>
+            <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" IsEnabled="{Binding IsNextEnabled}" Content="Next" Command="{Binding Next}"/>
+        </Grid>
+        <Grid Background="#50505050" Visibility="{Binding ProgressVisibility}">
+            <ProgressBar VerticalAlignment="Center" IsIndeterminate="True"/>
+        </Grid>
+    </Grid>
+</Window>
