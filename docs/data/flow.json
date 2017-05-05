@@ -14409,7 +14409,9 @@
               "isSolved": true
             },
             {
-              "number": 17
+              "number": 17,
+              "flows": 14,
+              "isSolved": true
             },
             {
               "number": 18,
@@ -14422,7 +14424,9 @@
               "isSolved": true
             },
             {
-              "number": 20
+              "number": 20,
+              "flows": 10,
+              "isSolved": true
             },
             {
               "number": 21,
@@ -14440,7 +14444,9 @@
               "isSolved": true
             },
             {
-              "number": 24
+              "number": 24,
+              "flows": 11,
+              "isSolved": true
             },
             {
               "number": 25,
@@ -14463,7 +14469,9 @@
               "isSolved": true
             },
             {
-              "number": 29
+              "number": 29,
+              "flows": 13,
+              "isSolved": true
             },
             {
               "number": 30,
@@ -14491,10 +14499,14 @@
               "isSolved": true
             },
             {
-              "number": 4
+              "number": 4,
+              "flows": 15,
+              "isSolved": true
             },
             {
-              "number": 5
+              "number": 5,
+              "flows": 14,
+              "isSolved": true
             },
             {
               "number": 6,
@@ -14533,16 +14545,24 @@
               "isSolved": true
             },
             {
-              "number": 13
+              "number": 13,
+              "flows": 12,
+              "isSolved": true
             },
             {
-              "number": 14
+              "number": 14,
+              "flows": 13,
+              "isSolved": true
             },
             {
-              "number": 15
+              "number": 15,
+              "flows": 13,
+              "isSolved": true
             },
             {
-              "number": 16
+              "number": 16,
+              "flows": 15,
+              "isSolved": true
             },
             {
               "number": 17,
@@ -14556,28 +14576,44 @@
               "toCheck": true
             },
             {
-              "number": 19
+              "number": 19,
+              "flows": 15,
+              "isSolved": true
             },
             {
-              "number": 20
+              "number": 20,
+              "flows": 14,
+              "isSolved": true
             },
             {
-              "number": 21
+              "number": 21,
+              "flows": 14,
+              "isSolved": true
             },
             {
-              "number": 22
+              "number": 22,
+              "flows": 13,
+              "isSolved": true
             },
             {
-              "number": 23
+              "number": 23,
+              "flows": 11,
+              "isSolved": true
             },
             {
-              "number": 24
+              "number": 24,
+              "flows": 13,
+              "isSolved": true
             },
             {
-              "number": 25
+              "number": 25,
+              "flows": 14,
+              "isSolved": true
             },
             {
-              "number": 26
+              "number": 26,
+              "flows": 11,
+              "isSolved": true
             },
             {
               "number": 27,
@@ -14590,10 +14626,14 @@
               "isSolved": true
             },
             {
-              "number": 29
+              "number": 29,
+              "flows": 16,
+              "isSolved": true
             },
             {
-              "number": 30
+              "number": 30,
+              "flows": 15,
+              "isSolved": true
             }
           ]
         }
@@ -15205,7 +15245,8 @@
             },
             {
               "number": 28,
-              "flows": 13
+              "flows": 12,
+              "isSolved": true
             },
             {
               "number": 29,
@@ -15213,7 +15254,9 @@
               "isSolved": true
             },
             {
-              "number": 30
+              "number": 30,
+              "flows": 11,
+              "isSolved": true
             }
           ]
         },
@@ -15221,7 +15264,9 @@
           "name": "14x14",
           "levels": [
             {
-              "number": 1
+              "number": 1,
+              "flows": 11,
+              "isSolved": true
             },
             {
               "number": 2,
@@ -15234,34 +15279,50 @@
               "isSolved": true
             },
             {
-              "number": 4
+              "number": 4,
+              "flows": 15,
+              "isSolved": true
             },
             {
-              "number": 5
+              "number": 5,
+              "flows": 15,
+              "isSolved": true
             },
             {
-              "number": 6
+              "number": 6,
+              "flows": 14,
+              "isSolved": true
             },
             {
-              "number": 7
+              "number": 7,
+              "flows": 12,
+              "isSolved": true
             },
             {
               "number": 8,
               "flows": 11,
-              "isSolved": true
+              "isSolved": true,
+              "toCheck": true
             },
             {
               "number": 9,
-              "flows": 14
+              "flows": 13,
+              "isSolved": true
             },
             {
-              "number": 10
+              "number": 10,
+              "flows": 14,
+              "isSolved": true
             },
             {
-              "number": 11
+              "number": 11,
+              "flows": 15,
+              "isSolved": true
             },
             {
-              "number": 12
+              "number": 12,
+              "flows": 12,
+              "isSolved": true
             },
             {
               "number": 13,
@@ -15269,55 +15330,89 @@
               "isSolved": true
             },
             {
-              "number": 14
+              "number": 14,
+              "flows": 14,
+              "isSolved": true
             },
             {
-              "number": 15
+              "number": 15,
+              "flows": 12,
+              "isSolved": true
             },
             {
-              "number": 16
+              "number": 16,
+              "flows": 14,
+              "isSolved": true
             },
             {
-              "number": 17
+              "number": 17,
+              "flows": 14,
+              "isSolved": true
             },
             {
-              "number": 18
+              "number": 18,
+              "flows": 15,
+              "isSolved": true
             },
             {
-              "number": 19
+              "number": 19,
+              "flows": 14,
+              "isSolved": true
             },
             {
-              "number": 20
+              "number": 20,
+              "flows": 15,
+              "isSolved": true
             },
             {
-              "number": 21
+              "number": 21,
+              "flows": 16,
+              "isSolved": true
             },
             {
-              "number": 22
+              "number": 22,
+              "flows": 14,
+              "isSolved": true
             },
             {
-              "number": 23
+              "number": 23,
+              "flows": 16,
+              "isSolved": true
             },
             {
-              "number": 24
+              "number": 24,
+              "flows": 15,
+              "isSolved": true
             },
             {
-              "number": 25
+              "number": 25,
+              "flows": 15,
+              "isSolved": true
             },
             {
-              "number": 26
+              "number": 26,
+              "flows": 10,
+              "isSolved": true
             },
             {
-              "number": 27
+              "number": 27,
+              "flows": 13,
+              "isSolved": true
             },
             {
-              "number": 28
+              "number": 28,
+              "flows": 14,
+              "isSolved": true
             },
             {
-              "number": 29
+              "number": 29,
+              "flows": 14,
+              "isSolved": true
             },
             {
-              "number": 30
+              "number": 30,
+              "flows": 14,
+              "isSolved": true
             }
           ]
         }
