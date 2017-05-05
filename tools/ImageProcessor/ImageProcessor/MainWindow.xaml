@@ -49,10 +49,11 @@
                 </Grid.RowDefinitions>
                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding SelectedLevel.Number, StringFormat=Level {0}, Mode=Oneway}"/>
                 
-                <TextBlock Grid.Row="1" Text="Bridges:"/>
-                <TextBox Grid.Row="2" Text="{Binding SelectedLevel.Bridges}"/>
-                <TextBlock Grid.Row="3" Text="To Check:"/>
-                <CheckBox Grid.Row="4" IsChecked="{Binding SelectedLevel.ToCheck}"/>
+                
+                <TextBlock Grid.Row="1" Text="To Check:"/>
+                <CheckBox Grid.Row="2" IsChecked="{Binding SelectedLevel.ToCheck}"/>
+                <TextBlock Grid.Row="3" Text="Bridges:"/>
+                <TextBox Grid.Row="4" Text="{Binding SelectedLevel.Bridges}"/>
                 <TextBlock Grid.Row="5" Text="Flows:"/>
                 <TextBox Grid.Row="6" Text="{Binding SelectedLevel.Flows}"/>
             </Grid>
