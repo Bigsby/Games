@@ -8,26 +8,26 @@ namespace ImageProcessor.ViewModels
 {
     public abstract class DispatcherObservableObject : ObservableObject
     {
-        private readonly Dispatcher _dispatcher;
+        protected readonly Dispatcher Dispatcher;
 
         public DispatcherObservableObject(Dispatcher dispatcher)
         {
-            _dispatcher = dispatcher;
+            Dispatcher = dispatcher;
         }
 
         protected override void RaisePropertyChangedInternal(string propertyName)
         {
-            _dispatcher.Invoke(() => base.RaisePropertyChangedInternal(propertyName));
+            Dispatcher.Invoke(() => base.RaisePropertyChangedInternal(propertyName));
         }
 
         protected void DispatcherInvoke(Action action)
         {
-            _dispatcher.Invoke(action);
+            Dispatcher.Invoke(action);
         }
 
         protected T DispatcherInvoke<T>(Func<T> func)
         {
-            return _dispatcher.Invoke(func);
+            return Dispatcher.Invoke(func);
         }
     }
 

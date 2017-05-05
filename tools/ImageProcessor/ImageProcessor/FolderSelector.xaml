@@ -1,0 +1,33 @@
+﻿<Window x:Class="ImageProcessor.FolderSelector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="FolderSelector" Height="300" Width="300">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Button FontWeight="Bold" Content="Parent Folder" Command="{Binding Back}"/>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding Folders}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Name}" 
+                                Command="{Binding DataContext.SelectItem, RelativeSource={RelativeSource AncestorType=Window}}"
+                                CommandParameter="{Binding}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            <Button Grid.Row="2" FontWeight="Bold" Content="Select Folder" Command="{Binding Select}"/>
+        </Grid>
+        <Grid Background="#50505050" Visibility="{Binding ProgressVisibility}">
+            <ProgressBar VerticalAlignment="Center" IsIndeterminate="True"/>
+        </Grid>
+    </Grid>
+</Window>
