@@ -47,6 +47,11 @@ namespace ImageProcessor.ViewModels
         private const string _dataFolder = "data";
         private const string _targetFolder = "images";
         private Bitmap _croppedImage;
+        private JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore,
+            Formatting = Formatting.Indented
+        };
         #endregion
 
         public MainViewModel(string clientId, Dispatcher dispatcher) : base(dispatcher)
@@ -141,7 +146,8 @@ namespace ImageProcessor.ViewModels
                 var targetPath = Path.Combine(targetFolder, $"{SelectedLevel.Number.ToString("D3")}.jpg");
                 _croppedImage.Save(targetPath, ImageFormat.Jpeg);
 
-                var json = JsonConvert.SerializeObject(SelectedGame, Formatting.Indented);
+                SelectedLevel.HasSolution = true;
+                var json = JsonConvert.SerializeObject(SelectedGame, _serializerSettings);
                 var gameFilePath = Path.Combine(_baseFolder, _dataFolder, SelectedGame.Id + ".json");
                 System.IO.File.Delete(gameFilePath);
                 System.IO.File.WriteAllText(gameFilePath, json);

@@ -46,11 +46,31 @@
             </Grid>
             <Grid Grid.Column="3" Grid.Row="2" >
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
+                    <RowDefinition Height="2*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Button Content="Move To Other" Command="{Binding MoveToOther}"/>
-                <Button Grid.Row="1" Content="Save" Command="{Binding Save}"/>
+                <Button Content="Save" Command="{Binding Save}" x:Name="SaveButton" FontWeight="Bold">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsFocused, ElementName=SaveButton}" Value="True">
+                                    <Setter Property="Background" Value="LightGreen"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Grid.Row="1" Content="Move To Other" Command="{Binding MoveToOther}" x:Name="MoveButton">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsFocused, ElementName=MoveButton}" Value="True">
+                                    <Setter Property="Background" Value="Red"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </Grid>
             <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Previous" IsEnabled="{Binding IsPreviousEnabled}" Command="{Binding Previous}"/>
             <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" IsEnabled="{Binding IsNextEnabled}" Content="Next" Command="{Binding Next}"/>

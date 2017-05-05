@@ -40,6 +40,6 @@ namespace ImageProcessor.ViewModels
         [JsonProperty("bridges")]
         public int? Bridges { get; set; }
         [JsonProperty("hasSolution")]
-        public bool HasSolution { get; set; }
+        public bool? HasSolution { get; set; }
     }
 }
