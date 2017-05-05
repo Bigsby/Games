@@ -42,6 +42,7 @@ namespace ImageProcessor.ViewModels
         private Item _handledFolder;
         private bool _isNextEnabled;
         private bool _isPreviousEnabled;
+        private string _title = "Flow Image Processor";
         private readonly string _clientId;
         //private const string _screenShotsFolderPath = "Pictures/Screenshots";
         private const string _handledFolderPath = "Pictures/Screenshots/Handled";
@@ -190,6 +191,7 @@ namespace ImageProcessor.ViewModels
         public bool IsNextEnabled { get => _isNextEnabled; set => SetAndRaise(ref _isNextEnabled, value); }
         public bool IsPreviousEnabled { get => _isPreviousEnabled; set => SetAndRaise(ref _isPreviousEnabled, value); }
         public IEnumerable<Crop> Crops { get => _crops; set => _crops = value; }
+        public string Title { get => _title; set => SetAndRaise(ref _title, value); }
         public Crop SelectedCrop
         {
             get => _selectedCrop;
@@ -258,13 +260,14 @@ namespace ImageProcessor.ViewModels
         {
             _currentIndex = 0;
 
+            _rootFolder = await _client.Drive.Items[_rootFolder.Id].Request().GetAsync().ConfigureAwait(false);
             _handledFolder = await _client.Drive.Root.ItemWithPath(_handledFolderPath).Request().GetAsync().ConfigureAwait(false);
             _othersFolder = await _client.Drive.Root.ItemWithPath(_otherFolderPath).Request().GetAsync().ConfigureAwait(false);
 
             var screenShotsChildren = await _client.Drive.Items[_rootFolder.Id].Children.Request().GetAsync().ConfigureAwait(false);
 
             _items = screenShotsChildren.Where(i => i.Image != null).ToList();
-
+            Title = $"Flow Image Processor ({_rootFolder.Folder.ChildCount})";
             IsPreviousEnabled = false;
             IsNextEnabled = _items.Count() > 0;
 
