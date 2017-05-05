@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="800">
+        Title="Flow Image Processor" Height="500" Width="1000">
     <Grid>
         <Button Content="Sign in" Visibility="{Binding SignButtonVisibility, Mode=Oneway}"  Command="{Binding SignIn, Mode=OneTime}"/>
         <Grid Visibility="{Binding FormVisibility, Mode=Oneway}">
@@ -29,7 +29,14 @@
             <ComboBox Grid.Row="1" Grid.Column="2" ItemsSource="{Binding SelectedPack.Sections}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedSection}"/>
             <ComboBox Grid.Row="1" Grid.Column="3" ItemsSource="{Binding SelectedSection.Levels}" DisplayMemberPath="Number" SelectedItem="{Binding SelectedLevel}"/>
             <Image Grid.Row="2" Source="{Binding ImageOriginal, IsAsync=True, Mode=Oneway}" />
-            <Image Grid.Row="2" Grid.Column="1" Source="{Binding ImageCropped, IsAsync=True, Mode=Oneway}" />
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image Source="{Binding ImageCropped, IsAsync=True, Mode=Oneway}" />
+                <ListBox Grid.Row="1" Focusable="False" IsTabStop="False" ItemsSource="{Binding Crops}" SelectedItem="{Binding SelectedCrop}" DisplayMemberPath="Name"/>
+            </Grid>
             <Grid Grid.Row="2" Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -37,12 +44,17 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding SelectedLevel.Number, StringFormat=Level {0}, Mode=Oneway}"/>
-                <TextBlock Grid.Row="1" Text="Flows:"/>
-                <TextBox Grid.Row="2" Text="{Binding SelectedLevel.Flows}"/>
-                <TextBlock Grid.Row="3" Text="Bridges:"/>
-                <TextBox Grid.Row="4" Text="{Binding SelectedLevel.Bridges}"/>
+                
+                <TextBlock Grid.Row="1" Text="Bridges:"/>
+                <TextBox Grid.Row="2" Text="{Binding SelectedLevel.Bridges}"/>
+                <TextBlock Grid.Row="3" Text="To Check:"/>
+                <CheckBox Grid.Row="4" IsChecked="{Binding SelectedLevel.ToCheck}"/>
+                <TextBlock Grid.Row="5" Text="Flows:"/>
+                <TextBox Grid.Row="6" Text="{Binding SelectedLevel.Flows}"/>
             </Grid>
             <Grid Grid.Column="3" Grid.Row="2" >
                 <Grid.RowDefinitions>

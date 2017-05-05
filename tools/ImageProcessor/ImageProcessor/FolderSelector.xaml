@@ -17,9 +17,18 @@
                 <ItemsControl ItemsSource="{Binding Folders}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button Content="{Binding Name}" 
+                            <Button
                                 Command="{Binding DataContext.SelectItem, RelativeSource={RelativeSource AncestorType=Window}}"
-                                CommandParameter="{Binding}"/>
+                                CommandParameter="{Binding}">
+                                <TextBlock>
+                                    <TextBlock.Inlines>
+                                        <Run Text="{Binding Name}"/>
+                                        <Run Text=" ("/>
+                                        <Run Text="{Binding Folder.ChildCount}"/>
+                                        <Run Text=")"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                            </Button>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

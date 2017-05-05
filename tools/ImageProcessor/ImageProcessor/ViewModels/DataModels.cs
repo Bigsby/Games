@@ -39,7 +39,15 @@ namespace ImageProcessor.ViewModels
         public int? Flows { get; set; }
         [JsonProperty("bridges")]
         public int? Bridges { get; set; }
-        [JsonProperty("hasSolution")]
-        public bool? HasSolution { get; set; }
+        [JsonProperty("isSolved")]
+        public bool? IsSolved { get; set; }
+        [JsonProperty("toCheck")]
+        public bool? ToCheck { get; set; }
+    }
+
+    public struct Crop
+    {
+        public string Name { get; set; }
+        public int Start { get; set; }
     }
 }

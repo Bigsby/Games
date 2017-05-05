@@ -27,6 +27,8 @@ namespace ImageProcessor.ViewModels
         private Visibility _formVisibility = Visibility.Collapsed;
         private ImageSource _imageOriginal;
         private ImageSource _imageCropped;
+        private IEnumerable<Crop> _crops;
+        private Crop _selectedCrop;
         private IEnumerable<Game> _games;
         private OneDriveClient _client;
         private Game _selectedGame;
@@ -57,22 +59,21 @@ namespace ImageProcessor.ViewModels
         public MainViewModel(string clientId, Dispatcher dispatcher) : base(dispatcher)
         {
             _clientId = clientId;
+            _crops = new List<Crop>
+            {
+                new Crop
+                {
+                    Name = "Normal",
+                    Start = 364
+                },
+                new Crop
+                {
+                    Name = "Application Bar",
+                    Start = 322
+                }
+            };
+            _selectedCrop = _crops.ElementAt(0);
         }
-
-        #region Properties
-        public Visibility ProgressVisibility { get => _progressVisibility; set => SetAndRaise(ref _progressVisibility, value); }
-        public Visibility SignButtonVisibility { get => _signButtonVisibility; set => SetAndRaise(ref _signButtonVisibility, value); }
-        public ImageSource ImageOriginal { get => _imageOriginal; set => SetAndRaise(ref _imageOriginal, value); }
-        public Visibility FormVisibility { get => _formVisibility; set => SetAndRaise(ref _formVisibility, value); }
-        public ImageSource ImageCropped { get => _imageCropped; set => SetAndRaise(ref _imageCropped, value); }
-        public IEnumerable<Game> Games { get => _games; set => SetAndRaise(ref _games, value); }
-        public Game SelectedGame { get => _selectedGame; set => SetAndRaise(ref _selectedGame, value); }
-        public Pack SelectedPack { get => _selectedPack; set => SetAndRaise(ref _selectedPack, value); }
-        public Section SelectedSection { get => _selectedSection; set => SetAndRaise(ref _selectedSection, value); }
-        public Level SelectedLevel { get => _selectedLevel; set => SetAndRaise(ref _selectedLevel, value); }
-        public bool IsNextEnabled { get => _isNextEnabled; set => SetAndRaise(ref _isNextEnabled, value); }
-        public bool IsPreviousEnabled { get => _isPreviousEnabled; set => SetAndRaise(ref _isPreviousEnabled, value); }
-        #endregion
 
         #region Commands
         public ICommand SignIn => new ActionCommand("", async p =>
@@ -139,32 +140,65 @@ namespace ImageProcessor.ViewModels
 
         public ICommand Save => new ActionCommand("", async p =>
         {
-            await DoWithProgress(async () =>
-            {
-                var targetFolder = Path.Combine(_baseFolder, _targetFolder, SelectedGame.Id, SelectedPack.Name, SelectedSection.Name);
-                Directory.CreateDirectory(targetFolder);
-                var targetPath = Path.Combine(targetFolder, $"{SelectedLevel.Number.ToString("D3")}.jpg");
-                _croppedImage.Save(targetPath, ImageFormat.Jpeg);
-
-                SelectedLevel.HasSolution = true;
-                var json = JsonConvert.SerializeObject(SelectedGame, _serializerSettings);
-                var gameFilePath = Path.Combine(_baseFolder, _dataFolder, SelectedGame.Id + ".json");
-                System.IO.File.Delete(gameFilePath);
-                System.IO.File.WriteAllText(gameFilePath, json);
-
-                var updateItem = new Item
+            if (null == SelectedGame
+                || null == SelectedPack
+                || null == SelectedSection
+                || null == SelectedLevel
+                || !SelectedLevel.Flows.HasValue)
+                DispatcherInvoke(() => System.Windows.MessageBox.Show("Input not complete!", "Error", MessageBoxButton.OK, MessageBoxImage.Error));
+            else
+                await DoWithProgress(async () =>
                 {
-                    ParentReference = new ItemReference
-                    {
-                        Id = _handledFolder.Id
-                    }
-                };
+                    var targetFolder = Path.Combine(_baseFolder, _targetFolder, SelectedGame.Id, SelectedPack.Name, SelectedSection.Name);
+                    Directory.CreateDirectory(targetFolder);
+                    var targetPath = Path.Combine(targetFolder, $"{SelectedLevel.Number.ToString("D3")}.jpg");
+                    _croppedImage.Save(targetPath, ImageFormat.Jpeg);
 
-                await _client.Drive.Items[_items.ElementAt(_currentIndex).Id].Request().UpdateAsync(updateItem).ConfigureAwait(false);
-                await LoadDriveComponents().ConfigureAwait(false);
-            }).ConfigureAwait(false);
+                    SelectedLevel.IsSolved = true;
+                    var json = JsonConvert.SerializeObject(SelectedGame, _serializerSettings);
+                    var gameFilePath = Path.Combine(_baseFolder, _dataFolder, SelectedGame.Id + ".json");
+                    System.IO.File.Delete(gameFilePath);
+                    System.IO.File.WriteAllText(gameFilePath, json);
+
+                    var updateItem = new Item
+                    {
+                        ParentReference = new ItemReference
+                        {
+                            Id = _handledFolder.Id
+                        }
+                    };
+
+                    await _client.Drive.Items[_items.ElementAt(_currentIndex).Id].Request().UpdateAsync(updateItem).ConfigureAwait(false);
+                    await LoadDriveComponents().ConfigureAwait(false);
+                    SelectedLevel = NextLevel();
+                }).ConfigureAwait(false);
 
         });
+        #endregion
+
+        #region Properties
+        public Visibility ProgressVisibility { get => _progressVisibility; set => SetAndRaise(ref _progressVisibility, value); }
+        public Visibility SignButtonVisibility { get => _signButtonVisibility; set => SetAndRaise(ref _signButtonVisibility, value); }
+        public ImageSource ImageOriginal { get => _imageOriginal; set => SetAndRaise(ref _imageOriginal, value); }
+        public Visibility FormVisibility { get => _formVisibility; set => SetAndRaise(ref _formVisibility, value); }
+        public ImageSource ImageCropped { get => _imageCropped; set => SetAndRaise(ref _imageCropped, value); }
+        public IEnumerable<Game> Games { get => _games; set => SetAndRaise(ref _games, value); }
+        public Game SelectedGame { get => _selectedGame; set => SetAndRaise(ref _selectedGame, value); }
+        public Pack SelectedPack { get => _selectedPack; set => SetAndRaise(ref _selectedPack, value); }
+        public Section SelectedSection { get => _selectedSection; set => SetAndRaise(ref _selectedSection, value); }
+        public Level SelectedLevel { get => _selectedLevel; set => SetAndRaise(ref _selectedLevel, value); }
+        public bool IsNextEnabled { get => _isNextEnabled; set => SetAndRaise(ref _isNextEnabled, value); }
+        public bool IsPreviousEnabled { get => _isPreviousEnabled; set => SetAndRaise(ref _isPreviousEnabled, value); }
+        public IEnumerable<Crop> Crops { get => _crops; set => _crops = value; }
+        public Crop SelectedCrop
+        {
+            get => _selectedCrop;
+            set
+            {
+                SetAndRaise(ref _selectedCrop, value);
+                DoWithProgress(async () => await ShowCropped().ConfigureAwait(false)).ConfigureAwait(false);
+            }
+        }
         #endregion
 
         #region Private Methods
@@ -252,7 +286,7 @@ namespace ImageProcessor.ViewModels
         {
             using (var stream = await _client.Drive.Items[_items.ElementAt(_currentIndex).Id].Content.Request().GetAsync().ConfigureAwait(false))
             {
-                var cropRect = new Rectangle(0, 364, 720, 720);
+                var cropRect = new Rectangle(0, SelectedCrop.Start, 720, 720);
                 var source = System.Drawing.Image.FromStream(stream);
 
                 _croppedImage = new Bitmap(cropRect.Width, cropRect.Height);
@@ -293,6 +327,16 @@ namespace ImageProcessor.ViewModels
             Games = result;
         }
 
+        private Level NextLevel()
+        {
+            var next = false;
+            foreach (var level in SelectedSection.Levels)
+            {
+                if (next) return level;
+                next = level == SelectedLevel;
+            }
+            return null;
+        }
         private async Task DoWithProgress(Func<Task> action)
         {
             ProgressVisibility = Visibility.Visible;
