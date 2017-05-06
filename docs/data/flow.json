@@ -460,7 +460,9 @@
               "isSolved": true
             },
             {
-              "number": 29
+              "number": 29,
+              "flows": 6,
+              "isSolved": true
             },
             {
               "number": 30,
@@ -683,7 +685,9 @@
               "isSolved": true
             },
             {
-              "number": 12
+              "number": 12,
+              "flows": 8,
+              "isSolved": true
             },
             {
               "number": 13,
@@ -741,7 +745,9 @@
               "isSolved": true
             },
             {
-              "number": 24
+              "number": 24,
+              "flows": 8,
+              "isSolved": true
             },
             {
               "number": 25,
@@ -1384,7 +1390,9 @@
               "isSolved": true
             },
             {
-              "number": 28
+              "number": 28,
+              "flows": 8,
+              "isSolved": true
             },
             {
               "number": 29,
@@ -1582,7 +1590,9 @@
               "isSolved": true
             },
             {
-              "number": 5
+              "number": 5,
+              "flows": 5,
+              "isSolved": true
             },
             {
               "number": 6,
@@ -6041,7 +6051,9 @@
               "isSolved": true
             },
             {
-              "number": 85
+              "number": 85,
+              "flows": 8,
+              "isSolved": true
             },
             {
               "number": 86,
@@ -6059,7 +6071,9 @@
               "isSolved": true
             },
             {
-              "number": 89
+              "number": 89,
+              "flows": 5,
+              "isSolved": true
             },
             {
               "number": 90,
@@ -8558,7 +8572,9 @@
               "isSolved": true
             },
             {
-              "number": 120
+              "number": 120,
+              "flows": 12,
+              "isSolved": true
             }
           ]
         },
@@ -12320,7 +12336,9 @@
               "number": 4
             },
             {
-              "number": 5
+              "number": 5,
+              "flows": 6,
+              "isSolved": true
             },
             {
               "number": 6
@@ -14710,7 +14728,9 @@
               "isSolved": true
             },
             {
-              "number": 14
+              "number": 14,
+              "flows": 11,
+              "isSolved": true
             },
             {
               "number": 15,
