@@ -46,16 +46,20 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding SelectedLevel.Number, StringFormat=Level {0}, Mode=Oneway}"/>
                 
                 
                 <TextBlock Grid.Row="1" Text="To Check:"/>
                 <CheckBox Grid.Row="2" IsChecked="{Binding SelectedLevel.ToCheck}"/>
-                <TextBlock Grid.Row="3" Text="Bridges:"/>
-                <TextBox Grid.Row="4" Text="{Binding SelectedLevel.Bridges}"/>
-                <TextBlock Grid.Row="5" Text="Flows:"/>
-                <TextBox Grid.Row="6" Text="{Binding SelectedLevel.Flows}"/>
+                <TextBlock Grid.Row="3" Text="Size:"/>
+                <TextBox Grid.Row="4" Text="{Binding SelectedLevel.Size}"/>
+                <TextBlock Grid.Row="5" Text="Bridges:"/>
+                <TextBox Grid.Row="6" Text="{Binding SelectedLevel.Bridges}"/>
+                <TextBlock Grid.Row="7" Text="Flows:"/>
+                <TextBox Grid.Row="8" Text="{Binding SelectedLevel.Flows}"/>
             </Grid>
             <Grid Grid.Column="3" Grid.Row="2" >
                 <Grid.RowDefinitions>

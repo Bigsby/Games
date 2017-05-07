@@ -21,6 +21,8 @@ namespace ImageProcessor.ViewModels
         public string Name { get; set; }
         [JsonProperty("sections")]
         public IEnumerable<Section> Sections { get; set; }
+        [JsonProperty("size")]
+        public int? Size { get; set; }
     }
 
     public class Section
@@ -29,6 +31,8 @@ namespace ImageProcessor.ViewModels
         public string Name { get; set; }
         [JsonProperty("levels")]
         public IEnumerable<Level> Levels { get; set; }
+        [JsonProperty("size")]
+        public int? Size { get; set; }
     }
 
     public class Level
@@ -39,6 +43,8 @@ namespace ImageProcessor.ViewModels
         public int? Flows { get; set; }
         [JsonProperty("bridges")]
         public int? Bridges { get; set; }
+        [JsonProperty("size")]
+        public int? Size { get; set; }
         [JsonProperty("isSolved")]
         public bool? IsSolved { get; set; }
         [JsonProperty("toCheck")]

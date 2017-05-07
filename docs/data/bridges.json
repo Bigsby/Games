@@ -7945,94 +7945,184 @@
           "name": "1 - 30",
           "levels": [
             {
-              "number": 1
+              "number": 1,
+              "flows": 11,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 2
+              "number": 2,
+              "flows": 12,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 3
+              "number": 3,
+              "flows": 8,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 4
+              "number": 4,
+              "flows": 10,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 5
+              "number": 5,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 6
+              "number": 6,
+              "flows": 9,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 7
+              "number": 7,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 8
+              "number": 8,
+              "flows": 13,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 9
+              "number": 9,
+              "flows": 9,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 10
+              "number": 10,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 11
+              "number": 11,
+              "flows": 9,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 12
+              "number": 12,
+              "flows": 9,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 13
+              "number": 13,
+              "flows": 11,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 14
+              "number": 14,
+              "flows": 12,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 15
+              "number": 15,
+              "flows": 11,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 16
+              "number": 16,
+              "flows": 12,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 17
+              "number": 17,
+              "flows": 11,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 18
+              "number": 18,
+              "flows": 9,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 19
+              "number": 19,
+              "flows": 11,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 20
+              "number": 20,
+              "flows": 11,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 21
+              "number": 21,
+              "flows": 10,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 22
+              "number": 22,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 23
+              "number": 23,
+              "flows": 8,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 24
+              "number": 24,
+              "flows": 11,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 25
+              "number": 25,
+              "flows": 8,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 26
+              "number": 26,
+              "flows": 10,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 27
+              "number": 27,
+              "flows": 9,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 28
+              "number": 28,
+              "flows": 12,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 29
+              "number": 29,
+              "flows": 12,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 30
+              "number": 30,
+              "flows": 11,
+              "bridges": 1,
+              "isSolved": true
             }
           ]
         },
@@ -8040,94 +8130,184 @@
           "name": "31 - 60",
           "levels": [
             {
-              "number": 31
+              "number": 31,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 32
+              "number": 32,
+              "flows": 10,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 33
+              "number": 33,
+              "flows": 11,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 34
+              "number": 34,
+              "flows": 10,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 35
+              "number": 35,
+              "flows": 12,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 36
+              "number": 36,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 37
+              "number": 37,
+              "flows": 10,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 38
+              "number": 38,
+              "flows": 12,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 39
+              "number": 39,
+              "flows": 11,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 40
+              "number": 40,
+              "flows": 10,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 41
+              "number": 41,
+              "flows": 11,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 42
+              "number": 42,
+              "flows": 12,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 43
+              "number": 43,
+              "flows": 11,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 44
+              "number": 44,
+              "flows": 11,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 45
+              "number": 45,
+              "flows": 11,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 46
+              "number": 46,
+              "flows": 12,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 47
+              "number": 47,
+              "flows": 9,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 48
+              "number": 48,
+              "flows": 8,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 49
+              "number": 49,
+              "flows": 9,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 50
+              "number": 50,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 51
+              "number": 51,
+              "flows": 12,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 52
+              "number": 52,
+              "flows": 11,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 53
+              "number": 53,
+              "flows": 12,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 54
+              "number": 54,
+              "flows": 12,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 55
+              "number": 55,
+              "flows": 10,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 56
+              "number": 56,
+              "flows": 12,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 57
+              "number": 57,
+              "flows": 11,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 58
+              "number": 58,
+              "flows": 10,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 59
+              "number": 59,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 60
+              "number": 60,
+              "flows": 10,
+              "bridges": 2,
+              "isSolved": true
             }
           ]
         },
@@ -8135,94 +8315,184 @@
           "name": "61 - 90",
           "levels": [
             {
-              "number": 61
+              "number": 61,
+              "flows": 10,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 62
+              "number": 62,
+              "flows": 13,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 63
+              "number": 63,
+              "flows": 11,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 64
+              "number": 64,
+              "flows": 11,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 65
+              "number": 65,
+              "flows": 11,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 66
+              "number": 66,
+              "flows": 12,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 67
+              "number": 67,
+              "flows": 9,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 68
+              "number": 68,
+              "flows": 12,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 69
+              "number": 69,
+              "flows": 9,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 70
+              "number": 70,
+              "flows": 8,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 71
+              "number": 71,
+              "flows": 9,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 72
+              "number": 72,
+              "flows": 9,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 73
+              "number": 73,
+              "flows": 9,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 74
+              "number": 74,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 75
+              "number": 75,
+              "flows": 12,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 76
+              "number": 76,
+              "flows": 9,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 77
+              "number": 77,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 78
+              "number": 78,
+              "flows": 13,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 79
+              "number": 79,
+              "flows": 9,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 80
+              "number": 80,
+              "flows": 12,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 81
+              "number": 81,
+              "flows": 12,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 82
+              "number": 82,
+              "flows": 10,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 83
+              "number": 83,
+              "flows": 10,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 84
+              "number": 84,
+              "flows": 10,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 85
+              "number": 85,
+              "flows": 11,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 86
+              "number": 86,
+              "flows": 11,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 87
+              "number": 87,
+              "flows": 9,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 88
+              "number": 88,
+              "flows": 11,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 89
+              "number": 89,
+              "flows": 12,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 90
+              "number": 90,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             }
           ]
         },
@@ -8230,91 +8500,178 @@
           "name": "91 - 120",
           "levels": [
             {
-              "number": 91
+              "number": 91,
+              "flows": 10,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 92
+              "number": 92,
+              "flows": 12,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 93
+              "number": 93,
+              "flows": 9,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 94
+              "number": 94,
+              "flows": 9,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 95
+              "number": 95,
+              "flows": 11,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 96
+              "number": 96,
+              "flows": 9,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 97
+              "number": 97,
+              "flows": 9,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 98
+              "number": 98,
+              "flows": 9,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 99
+              "number": 99,
+              "flows": 9,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 100
+              "number": 100,
+              "flows": 10,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 101
+              "number": 101,
+              "flows": 12,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 102
+              "number": 102,
+              "flows": 11,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 103
+              "number": 103,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 104
+              "number": 104,
+              "flows": 13,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 105
+              "number": 105,
+              "flows": 9,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 106
+              "number": 106,
+              "flows": 12,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 107
+              "number": 107,
+              "flows": 11,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 108
+              "number": 108,
+              "flows": 12,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 109
+              "number": 109,
+              "flows": 12,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 110
+              "number": 110,
+              "flows": 12,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 111
+              "number": 111,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 112
+              "number": 112,
+              "flows": 12,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 113
+              "number": 113,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 114
+              "number": 114,
+              "flows": 10,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 115
+              "number": 115,
+              "flows": 10,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 116
+              "number": 116,
+              "flows": 11,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 117
+              "number": 117,
+              "flows": 12,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 118
+              "number": 118,
+              "flows": 12,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 119
+              "number": 119,
+              "flows": 13,
+              "bridges": 1,
+              "isSolved": true
             },
             {
               "number": 120
