@@ -5,7 +5,21 @@
         "logo": "https://lh3.googleusercontent.com/lPQYdn_kgUWXu1dqhXE5sWTFHMhfoS8tGqCIjfYZl3j2lGtRihkBpLbB5-nBCd1MCQ=w300-rw",
         "stores": {
             "google": "https://play.google.com/store/apps/details?id=com.bigduckgames.flow&hl=en"
-        }
+        },
+		"colors":[
+			"FE0000",
+			"017F01",
+			"0000FE",
+			"F0ED00",
+			"FF8000",
+			"00FEFE",
+			"FF00FE",
+			"A62829",
+			"810081",
+			"FFFFFF",
+			"808080",
+			"00FF01"
+		]
     },
     {
         "id": "bridges",
