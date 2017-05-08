@@ -8,6 +8,7 @@
       "sections": [
         {
           "name": "5x5",
+		  "size": 5,
           "levels": [
             {
               "number": 1,
@@ -163,6 +164,7 @@
         },
         {
           "name": "6x6",
+		  "size": 6,
           "levels": [
             {
               "number": 1,
@@ -318,6 +320,7 @@
         },
         {
           "name": "7x7",
+		  "size": 7,
           "levels": [
             {
               "number": 1,
@@ -473,6 +476,7 @@
         },
         {
           "name": "8x8",
+		  "size": 8,
           "levels": [
             {
               "number": 1,
@@ -628,6 +632,7 @@
         },
         {
           "name": "9x9",
+		  "size": 9,
           "levels": [
             {
               "number": 1,
@@ -788,6 +793,7 @@
       "sections": [
         {
           "name": "5x5",
+		  "size": 5,
           "levels": [
             {
               "number": 1,
@@ -943,6 +949,7 @@
         },
         {
           "name": "6x6",
+		  "size": 6,
           "levels": [
             {
               "number": 1,
@@ -1098,6 +1105,7 @@
         },
         {
           "name": "7x7",
+		  "size": 7,
           "levels": [
             {
               "number": 1,
@@ -1253,6 +1261,7 @@
         },
         {
           "name": "8x8",
+		  "size": 8,
           "levels": [
             {
               "number": 1,
@@ -1408,6 +1417,7 @@
         },
         {
           "name": "9x9",
+		  "size": 9,
           "levels": [
             {
               "number": 1,
@@ -1568,6 +1578,7 @@
       "sections": [
         {
           "name": "5x5",
+		  "size": 5,
           "levels": [
             {
               "number": 1,
@@ -1723,6 +1734,7 @@
         },
         {
           "name": "6x6",
+		  "size": 6,
           "levels": [
             {
               "number": 1,
@@ -1878,6 +1890,7 @@
         },
         {
           "name": "7x7",
+		  "size": 7,
           "levels": [
             {
               "number": 1,
@@ -2033,6 +2046,7 @@
         },
         {
           "name": "8x8",
+		  "size": 8,
           "levels": [
             {
               "number": 1,
@@ -2188,6 +2202,7 @@
         },
         {
           "name": "9x9",
+		  "size": 9,
           "levels": [
             {
               "number": 1,
@@ -2348,6 +2363,7 @@
       "sections": [
         {
           "name": "5x5",
+		  "size": 5,
           "levels": [
             {
               "number": 1,
@@ -2503,6 +2519,7 @@
         },
         {
           "name": "6x6",
+		  "size": 6,
           "levels": [
             {
               "number": 1,
@@ -2658,6 +2675,7 @@
         },
         {
           "name": "7x7",
+		  "size": 7,
           "levels": [
             {
               "number": 1,
@@ -2813,6 +2831,7 @@
         },
         {
           "name": "8x8",
+		  "size": 8,
           "levels": [
             {
               "number": 1,
@@ -2968,6 +2987,7 @@
         },
         {
           "name": "9x9",
+		  "size": 9,
           "levels": [
             {
               "number": 1,
@@ -3128,6 +3148,7 @@
       "sections": [
         {
           "name": "5x5",
+		  "size": 5,
           "levels": [
             {
               "number": 1,
@@ -3313,6 +3334,7 @@
         },
         {
           "name": "6x6",
+		  "size": 6,
           "levels": [
             {
               "number": 1,
@@ -3498,6 +3520,7 @@
         },
         {
           "name": "7x7",
+		  "size": 7,
           "levels": [
             {
               "number": 1,
@@ -3683,6 +3706,7 @@
         },
         {
           "name": "8x8",
+		  "size": 8,
           "levels": [
             {
               "number": 1,
@@ -3868,6 +3892,7 @@
         },
         {
           "name": "9x9",
+		  "size": 9,
           "levels": [
             {
               "number": 1,
@@ -4055,6 +4080,7 @@
     },
     {
       "name": "6x6 Mania",
+	  "size": 6,
       "sections": [
         {
           "name": "1 - 30",
@@ -4836,6 +4862,7 @@
     },
     {
       "name": "7x7 Mania",
+	  "size": 7,
       "sections": [
         {
           "name": "1 - 30",
@@ -5616,6 +5643,7 @@
     },
     {
       "name": "8x8 Mania",
+	  "size": 8,
       "sections": [
         {
           "name": "1 - 30",
@@ -6396,6 +6424,7 @@
     },
     {
       "name": "9x9 Mania",
+	  "size": 9,
       "sections": [
         {
           "name": "1 - 30",
@@ -7176,6 +7205,7 @@
     },
     {
       "name": "10x10 Mania",
+	  "size": 10,
       "sections": [
         {
           "name": "1 - 30",
@@ -7956,6 +7986,7 @@
     },
     {
       "name": "11x11 Mania",
+	  "size": 11,
       "sections": [
         {
           "name": "1 - 30",
@@ -8737,6 +8768,7 @@
     },
     {
       "name": "12x12 Mania",
+	  "size": 12,
       "sections": [
         {
           "name": "1 - 30",
@@ -9521,6 +9553,7 @@
     },
     {
       "name": "13x13 Mania",
+	  "size": 13,
       "sections": [
         {
           "name": "1 - 30",
@@ -10304,6 +10337,7 @@
     },
     {
       "name": "14x14 Mania",
+	  "size": 14,
       "sections": [
         {
           "name": "1 - 30",
@@ -10784,6 +10818,7 @@
     },
     {
       "name": "15x15 Mania",
+	  "size": 15,
       "sections": [
         {
           "name": "1 - 30",
@@ -12132,6 +12167,7 @@
       "sections": [
         {
           "name": "8x8",
+		  "size": 8,
           "levels": [
             {
               "number": 1
@@ -12227,6 +12263,7 @@
         },
         {
           "name": "9x9",
+		  "size": 9,
           "levels": [
             {
               "number": 1
@@ -12322,6 +12359,7 @@
         },
         {
           "name": "10x10",
+		  "size": 10,
           "levels": [
             {
               "number": 1
@@ -12419,6 +12457,7 @@
         },
         {
           "name": "11x11",
+		  "size": 11,
           "levels": [
             {
               "number": 1
@@ -12514,6 +12553,7 @@
         },
         {
           "name": "12x12",
+		  "size": 12,
           "levels": [
             {
               "number": 1
@@ -12614,6 +12654,7 @@
       "sections": [
         {
           "name": "8x8",
+		  "size": 8,
           "levels": [
             {
               "number": 1
@@ -12709,6 +12750,7 @@
         },
         {
           "name": "9x9",
+		  "size": 9,
           "levels": [
             {
               "number": 1
@@ -12804,6 +12846,7 @@
         },
         {
           "name": "10x10",
+		  "size": 10,
           "levels": [
             {
               "number": 1
@@ -12899,6 +12942,7 @@
         },
         {
           "name": "11x11",
+		  "size": 11,
           "levels": [
             {
               "number": 1
@@ -12994,6 +13038,7 @@
         },
         {
           "name": "12x12",
+		  "size": 12,
           "levels": [
             {
               "number": 1
@@ -13094,6 +13139,7 @@
       "sections": [
         {
           "name": "10x10",
+		  "size": 10,
           "levels": [
             {
               "number": 1,
@@ -13249,6 +13295,7 @@
         },
         {
           "name": "11x11",
+		  "size": 11,
           "levels": [
             {
               "number": 1,
@@ -13404,6 +13451,7 @@
         },
         {
           "name": "12x12",
+		  "size": 12,
           "levels": [
             {
               "number": 1,
@@ -13560,6 +13608,7 @@
         },
         {
           "name": "13x13",
+		  "size": 13,
           "levels": [
             {
               "number": 1,
@@ -13716,6 +13765,7 @@
         },
         {
           "name": "14x14",
+		  "size": 14,
           "levels": [
             {
               "number": 1,
@@ -13879,6 +13929,7 @@
       "sections": [
         {
           "name": "10x10",
+		  "size": 10,
           "levels": [
             {
               "number": 1,
@@ -14034,6 +14085,7 @@
         },
         {
           "name": "11x11",
+		  "size": 11,
           "levels": [
             {
               "number": 1,
@@ -14190,6 +14242,7 @@
         },
         {
           "name": "12x12",
+		  "size": 12,
           "levels": [
             {
               "number": 1,
@@ -14345,6 +14398,7 @@
         },
         {
           "name": "13x13",
+		  "size": 13,
           "levels": [
             {
               "number": 1,
@@ -14500,6 +14554,7 @@
         },
         {
           "name": "14x14",
+		  "size": 14,
           "levels": [
             {
               "number": 1,
@@ -14662,6 +14717,7 @@
       "sections": [
         {
           "name": "10x10",
+		  "size": 10,
           "levels": [
             {
               "number": 1,
@@ -14816,6 +14872,7 @@
         },
         {
           "name": "11x11",
+		  "size": 11,
           "levels": [
             {
               "number": 1,
@@ -14971,6 +15028,7 @@
         },
         {
           "name": "12x12",
+		  "size": 12,
           "levels": [
             {
               "number": 1,
@@ -15126,6 +15184,7 @@
         },
         {
           "name": "13x13",
+		  "size": 13,
           "levels": [
             {
               "number": 1,
@@ -15282,6 +15341,7 @@
         },
         {
           "name": "14x14",
+		  "size": 14,
           "levels": [
             {
               "number": 1,
@@ -15443,6 +15503,7 @@
       "sections": [
         {
           "name": "5x5 (1 - 30)",
+		  "size": 5,
           "levels": [
             {
               "number": 1,
@@ -15598,6 +15659,7 @@
         },
         {
           "name": "5x5 (31 - 60)",
+		  "size": 5,
           "levels": [
             {
               "number": 31,
@@ -15753,6 +15815,7 @@
         },
         {
           "name": "6x6 (1 - 30)",
+		  "size": 6,
           "levels": [
             {
               "number": 1,
@@ -15908,6 +15971,7 @@
         },
         {
           "name": "6x6 (31 - 60)",
+		  "size": 6,
           "levels": [
             {
               "number": 31,
