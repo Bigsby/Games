@@ -364,6 +364,7 @@ namespace ImageProcessor.ViewModels
                     flows++;
 
             SelectedLevel.Flows = flows;
+            SelectedLevel = SelectedLevel;
         }
 
         private static bool HasColor(Bitmap image, System.Drawing.Color color)
