@@ -12472,19 +12472,34 @@
           "name": "12x12",
           "levels": [
             {
-              "number": 1
+              "number": 1,
+              "flows": 9,
+              "bridges": 3,
+              "isSolved": true
             },
             {
-              "number": 2
+              "number": 2,
+              "flows": 14,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 3
+              "number": 3,
+              "flows": 11,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 4
+              "number": 4,
+              "flows": 10,
+              "bridges": 1,
+              "isSolved": true
             },
             {
-              "number": 5
+              "number": 5,
+              "flows": 10,
+              "bridges": 2,
+              "isSolved": true
             },
             {
               "number": 6

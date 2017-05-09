@@ -13,6 +13,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -91,6 +92,22 @@
             </Grid>
             <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Previous" IsEnabled="{Binding IsPreviousEnabled}" Command="{Binding Previous}"/>
             <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" IsEnabled="{Binding IsNextEnabled}" Content="Next" Command="{Binding Next}"/>
+            <ItemsControl Grid.Row="4" Grid.ColumnSpan="4" ItemsSource="{Binding Colors}" Height="20">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Rectangle Width="10" Height="10" Margin="2" Stroke="Black" StrokeThickness="1">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="{Binding}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Grid>
         <Grid Background="#50505050" Visibility="{Binding ProgressVisibility}">
             <ProgressBar VerticalAlignment="Center" IsIndeterminate="True"/>

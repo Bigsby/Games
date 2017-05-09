@@ -50,11 +50,14 @@ namespace ImageProcessor.ViewModels
         private const string _dataFolder = "data";
         private const string _targetFolder = "images";
         private Bitmap _croppedImage;
+        private Bitmap _sourceImage;
         private JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
         {
             NullValueHandling = NullValueHandling.Ignore,
             Formatting = Formatting.Indented
         };
+        private IEnumerable<System.Drawing.Color> _colors;
+        private IEnumerable<System.Windows.Media.Color> _mediaColors;
         #endregion
 
         public MainViewModel(string clientId, Dispatcher dispatcher) : base(dispatcher)
@@ -172,6 +175,7 @@ namespace ImageProcessor.ViewModels
                     await _client.Drive.Items[_items.ElementAt(_currentIndex).Id].Request().UpdateAsync(updateItem).ConfigureAwait(false);
                     await LoadDriveComponents().ConfigureAwait(false);
                     SelectedLevel = NextLevel();
+                    //SetFlows();
                 }).ConfigureAwait(false);
 
         });
@@ -201,6 +205,7 @@ namespace ImageProcessor.ViewModels
                 DoWithProgress(async () => await ShowCropped().ConfigureAwait(false)).ConfigureAwait(false);
             }
         }
+        public IEnumerable<System.Windows.Media.Color> Colors { get => _mediaColors; set => SetAndRaise(ref _mediaColors, value); }
         #endregion
 
         #region Private Methods
@@ -290,12 +295,13 @@ namespace ImageProcessor.ViewModels
             using (var stream = await _client.Drive.Items[_items.ElementAt(_currentIndex).Id].Content.Request().GetAsync().ConfigureAwait(false))
             {
                 var cropRect = new Rectangle(0, SelectedCrop.Start, 720, 720);
-                var source = System.Drawing.Image.FromStream(stream);
+                //var source = System.Drawing.Image.FromStream(stream);
+                _sourceImage = System.Drawing.Image.FromStream(stream) as Bitmap;
 
                 _croppedImage = new Bitmap(cropRect.Width, cropRect.Height);
 
                 using (var g = Graphics.FromImage(_croppedImage))
-                    g.DrawImage(source, new Rectangle(0, 0, _croppedImage.Width, _croppedImage.Height), cropRect, GraphicsUnit.Pixel);
+                    g.DrawImage(_sourceImage, new Rectangle(0, 0, _croppedImage.Width, _croppedImage.Height), cropRect, GraphicsUnit.Pixel);
 
                 ImageCropped = DispatcherInvoke(() =>
                 {
@@ -323,6 +329,12 @@ namespace ImageProcessor.ViewModels
 
             foreach (var game in gamesList)
             {
+                if (null != game.Colors)
+                {
+                    _colors = game.Colors.Select(c => ColorTranslator.FromHtml("#" + c));
+                    Colors = _colors.Select(c => System.Windows.Media.Color.FromArgb(c.A, c.R, c.G, c.B));
+                }
+
                 var gameJson = System.IO.File.ReadAllText(Path.Combine(_baseFolder, _dataFolder, game.Id + ".json"));
                 result.Add(JsonConvert.DeserializeObject<Game>(gameJson));
             }
@@ -340,6 +352,30 @@ namespace ImageProcessor.ViewModels
             }
             return null;
         }
+
+        private void SetFlows()
+        {
+            if (null == SelectedLevel || null == _sourceImage)
+                return;
+
+            var flows = 0;
+            foreach (var color in _colors)
+                if (HasColor(_sourceImage, color))
+                    flows++;
+
+            SelectedLevel.Flows = flows;
+        }
+
+        private static bool HasColor(Bitmap image, System.Drawing.Color color)
+        {
+            for (int x = 0; x < image.Width; x++)
+                for (int y = 0; y < image.Height; y++)
+                    if (image.GetPixel(x, y) == color)
+                        return true;
+
+            return false;
+        }
+
         private async Task DoWithProgress(Func<Task> action)
         {
             ProgressVisibility = Visibility.Visible;

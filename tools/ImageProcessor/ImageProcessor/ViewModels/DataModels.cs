@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Drawing;
+using System;
 
 namespace ImageProcessor.ViewModels
 {
@@ -13,6 +15,8 @@ namespace ImageProcessor.ViewModels
         public string Logo { get; set; }
         [JsonProperty("packs")]
         public IEnumerable<Pack> Packs { get; set; }
+        [JsonProperty("colors")]
+        public IEnumerable<string> Colors { get; set; }
     }
 
     public class Pack
