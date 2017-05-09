@@ -23,7 +23,7 @@ const server = http.createServer((request, response) => {
         return mime;
     }
 
-    var virtualPath = request.url;
+    var virtualPath = decodeURI(request.url);
 
     if (virtualPath == "/" && config.defaultDocument)
         virtualPath = "/" + config.defaultDocument;

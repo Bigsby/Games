@@ -1,4 +1,4 @@
-<div ng-repeat="game in $ctrl.games">
+<div class="clickable" ng-repeat="game in $ctrl.games" ui-sref="flowGame({id:game.id})">
     <h1>{{game.name}}</h1>
     <img ng-src="{{game.logo}}"/>
 </div>

@@ -1,0 +1,30 @@
+.levelList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.levelCard{
+    display: flex;
+    flex-direction: column;
+    max-width: 30%;
+    margin: 10px;
+}
+
+.levelImage{
+    width: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+    .levelList{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .levelCard{
+        display: flex;
+        flex-direction: column;
+        max-width: 90%;
+        margin: 10px;
+    }   
+}

@@ -1,0 +1,4 @@
+here will got sections
+<div ng-repeat="section in $ctrl.pack.sections" ui-sref="flowSection({id:$ctrl.$params.id,pack:$ctrl.pack.name,section:section.name})">
+    {{$ctrl.id}} - {{$ctrl.pack.name}} - {{section.name}}
+</div>

@@ -1,0 +1,6 @@
+<div class="levelList">
+    <div class="levelCard" ng-repeat="level in $ctrl.section.levels">
+        <span class="leveTitle">Level {{level.number}}</span>
+        <img class="levelImage" ng-src="{{$ctrl.levelImagePath(level)}}" />
+    </div>
+</div>

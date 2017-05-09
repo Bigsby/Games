@@ -3,6 +3,9 @@
     "initialData": [
         "games"
     ],
+    "styles":[
+        "styles/appStyles.css"
+    ],
     "metadata":{
         "titlePrefix": "Games"
     }
