@@ -1,0 +1,9 @@
+<h1 class="clickable" ui-sref="flowGame({id:$ctrl.id})">{{$ctrl.name}}</h1>
+<h3 class="clickable" ui-sref="flowPack({id:$ctrl.id,pack:$ctrl.pack.name})">{{$ctrl.pack.name}}</h3>
+<h4 class="clickable" ui-sref="flowSection({id:$ctrl.id,pack:$ctrl.pack.name,section:$ctrl.section.name})">{{$ctrl.section.name}}</h4>
+<h5>Level {{$ctrl.level.number}}</h5>
+<div><b>Size:</b>{{$ctrl.level.size || $ctrl.section.size || $ctrl.pack.size}}</div>
+<div><b>Flows:</b>{{$ctrl.level.flows}}<br/></div>
+<div ng-if="$ctrl.level.bridges"><b>Bridges:</b>{{$ctrl.level.bridges}}<br/></div>
+<img class="levelSolution" ng-src="{{$ctrl.solutionImage}}" onerror="this.src='images/na.png'" />
+<img class="levelInitial" ng-src="{{$ctrl.initialImage}}" onerror="this.src='images/na.png'" />

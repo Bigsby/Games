@@ -7,7 +7,7 @@
 .levelCard{
     display: flex;
     flex-direction: column;
-    max-width: 30%;
+    width: 30%;
     height: auto;
     margin: 10px;
 }

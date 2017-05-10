@@ -2,9 +2,9 @@
 <h3 class="clickable" ui-sref="flowPack({id:$ctrl.id,pack:$ctrl.pack.name})">{{$ctrl.pack.name}}</h3>
 <h4>{{$ctrl.section.name}}</h4>
 <div class="levelList">
-    <div class="levelCard" ng-repeat="level in $ctrl.section.levels" ng-click="level.$initial=!level.$initial">
-        <span class="leveTitle"><b>Level {{level.number}}</b> - {{level.size || $ctrl.section.size || $ctrl.pack.size}}x{{level.size || $ctrl.section.size || $ctrl.pack.size}} - {{level.flows}} - {{level.bridges}}</span>
-        <div class="imageContainer">
+    <div class="levelCard" ng-repeat="level in $ctrl.section.levels">
+        <span class="leveTitle clickable" ui-sref="flowLevel({id:$ctrl.id,pack:$ctrl.pack.name,section:$ctrl.section.name, level:level.number})"><b>Level {{level.number}}</b> - {{level.size || $ctrl.section.size || $ctrl.pack.size}}x{{level.size || $ctrl.section.size || $ctrl.pack.size}} - {{level.flows}} - {{level.bridges}}</span>
+        <div class="imageContainer" ng-click="level.$initial=!level.$initial">
             <img class="levelImage solution" ng-src="{{$ctrl.levelImagePath(level)}}" onerror="this.src='images/na.png'"/>
             <img class="levelImage intial" ng-src="{{$ctrl.levelImageInitialPath(level)}}" ng-if="level.$initial" onerror="this.src='images/na.png'"/>
         </div>

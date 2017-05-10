@@ -13826,16 +13826,28 @@
               "isSolved": true
             },
             {
-              "number": 135
+              "number": 135,
+              "flows": 10,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 136
+              "number": 136,
+              "flows": 10,
+              "bridges": 5,
+              "isSolved": true
             },
             {
-              "number": 137
+              "number": 137,
+              "flows": 9,
+              "bridges": 2,
+              "isSolved": true
             },
             {
-              "number": 138
+              "number": 138,
+              "flows": 10,
+              "bridges": 3,
+              "isSolved": true
             },
             {
               "number": 139
