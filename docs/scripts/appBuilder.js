@@ -25,6 +25,7 @@ module.exports = {
                 var vm = this;
                 vm.$params = $stateParams;
                 $http.get("data/" + vm.$params.id + ".json").then(function (response) {
+                    angular.extend(vm, response.data);
                     vm.pack = response.data.packs.find(function (pack) {
                         return pack.name == vm.$params.pack;
                     });
@@ -56,6 +57,7 @@ module.exports = {
                 };
 
                 $http.get("data/" + vm.$params.id + ".json").then(function (response) {
+                    angular.extend(vm, response.data);
                     vm.pack = response.data.packs.find(function (pack) {
                         return pack.name == vm.$params.pack;
                     });

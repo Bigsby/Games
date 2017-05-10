@@ -1,4 +1,9 @@
-here will got sections
-<div ng-repeat="section in $ctrl.pack.sections" ui-sref="flowSection({id:$ctrl.$params.id,pack:$ctrl.pack.name,section:section.name})">
-    {{$ctrl.id}} - {{$ctrl.pack.name}} - {{section.name}}
-</div>
+<h1 class="clickable" ui-sref="flowGame({id:$ctrl.id})">{{$ctrl.name}}</h1>
+<h3>{{$ctrl.pack.name}}</h3>
+<ul class="noBulletList">
+    <li ng-repeat="section in $ctrl.pack.sections">
+        <button ui-sref="flowSection({id:$ctrl.$params.id,pack:$ctrl.pack.name,section:section.name})">
+    {{section.name}}
+</button>
+    </li>
+</ul>

@@ -1,4 +1,8 @@
-<div ng-repeat="pack in $ctrl.packs" ui-sref="flowPack({id:$ctrl.$params.id,pack:pack.name})">
+<h1>{{$ctrl.name}}</h1>
+<ul class="noBulletList">
+    <li ng-repeat="pack in $ctrl.packs" >
+        <button ui-sref="flowPack({id:$ctrl.$params.id,pack:pack.name})">
     {{pack.name}}
-</div>
-<!--<pre style="white-space: pre-wrap">{{$ctrl}}</pre>-->
+</button>
+    </li>
+</ul>
