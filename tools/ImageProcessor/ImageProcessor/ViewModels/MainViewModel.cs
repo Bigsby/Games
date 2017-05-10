@@ -179,6 +179,36 @@ namespace ImageProcessor.ViewModels
                 }).ConfigureAwait(false);
 
         });
+
+        public ICommand SaveInitial => new ActionCommand("", async p => 
+        {
+            if (null == SelectedGame
+               || null == SelectedPack
+               || null == SelectedSection
+               || null == SelectedLevel)
+                DispatcherInvoke(() => System.Windows.MessageBox.Show("Input not complete!", "Error", MessageBoxButton.OK, MessageBoxImage.Error));
+            else
+                await DoWithProgress(async () =>
+                {
+                    var targetFolder = Path.Combine(_baseFolder, _targetFolder, SelectedGame.Id, SelectedPack.Name, SelectedSection.Name);
+                    Directory.CreateDirectory(targetFolder);
+                    var targetPath = Path.Combine(targetFolder, $"{SelectedLevel.Number.ToString("D3")}i.jpg");
+                    _croppedImage.Save(targetPath, ImageFormat.Jpeg);
+
+                    var updateItem = new Item
+                    {
+                        ParentReference = new ItemReference
+                        {
+                            Id = _handledFolder.Id
+                        }
+                    };
+
+                    await _client.Drive.Items[_items.ElementAt(_currentIndex).Id].Request().UpdateAsync(updateItem).ConfigureAwait(false);
+                    await LoadDriveComponents().ConfigureAwait(false);
+                    SelectedLevel = NextLevel();
+
+                }).ConfigureAwait(false);
+        });
         #endregion
 
         #region Properties

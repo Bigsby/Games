@@ -1,19 +1,19 @@
 module.exports = {
-    ProcessData: function (data) { },
-    RegisterComponents: function (app) {
+    ProcessData: function(data) {},
+    RegisterComponents: function(app) {
         app.component("home", {
             templateUrl: templatePath("home"),
-            controller: function (data) {
+            controller: function(data) {
                 this.games = data.games;
             }
         });
 
         app.component("flowGame", {
             templateUrl: templatePath("flowGame"),
-            controller: function ($http, $stateParams) {
+            controller: function($http, $stateParams) {
                 var vm = this;
                 vm.$params = $stateParams;
-                $http.get("data/" + vm.$params.id + ".json").then(function (response) {
+                $http.get("data/" + vm.$params.id + ".json").then(function(response) {
                     angular.extend(vm, response.data);
                 });
             }
@@ -21,12 +21,12 @@ module.exports = {
 
         app.component("flowPack", {
             templateUrl: templatePath("flowPack"),
-            controller: function ($http, $stateParams) {
+            controller: function($http, $stateParams) {
                 var vm = this;
                 vm.$params = $stateParams;
-                $http.get("data/" + vm.$params.id + ".json").then(function (response) {
+                $http.get("data/" + vm.$params.id + ".json").then(function(response) {
                     angular.extend(vm, response.data);
-                    vm.pack = response.data.packs.find(function (pack) {
+                    vm.pack = response.data.packs.find(function(pack) {
                         return pack.name == vm.$params.pack;
                     });
                 });
@@ -35,7 +35,7 @@ module.exports = {
 
         app.component("flowSection", {
             templateUrl: templatePath("flowSection"),
-            controller: function ($http, $stateParams) {
+            controller: function($http, $stateParams) {
                 var vm = this;
                 vm.$params = $stateParams;
                 var pad = "000";
@@ -44,33 +44,42 @@ module.exports = {
                     return pad.substring(0, pad.length - level.length) + level;
                 };
 
-                vm.levelImagePath = function (level) {
-                    var result = "images/"
-                        + vm.$params.id
+                function imagePath(level, tag){
+                    return "images/" 
+                        + vm.$params.id 
                         + "/"
                         + vm.pack.name
                         + "/"
                         + vm.section.name
                         + "/"
-                        + padLevel(level.number.toString()) + ".jpg";
-                    return result;
+                        + padLevel(level.number.toString())
+                        + tag
+                        + ".jpg";
                 };
 
-                $http.get("data/" + vm.$params.id + ".json").then(function (response) {
+                vm.levelImagePath = function(level) {
+                    return imagePath(level, "");
+                };
+
+                vm.levelImageInitialPath = function(level) {
+                    return imagePath(level, "i");
+                };
+
+                $http.get("data/" + vm.$params.id + ".json").then(function(response) {
                     angular.extend(vm, response.data);
-                    vm.pack = response.data.packs.find(function (pack) {
+                    vm.pack = response.data.packs.find(function(pack) {
                         return pack.name == vm.$params.pack;
                     });
 
                     if (vm.pack)
-                        vm.section = vm.pack.sections.find(function (section) {
+                        vm.section = vm.pack.sections.find(function(section) {
                             return section.name == vm.$params.section;
                         });
                 });
             }
         });
     },
-    RegisterStates: function (stateProvider) {
+    RegisterStates: function(stateProvider) {
         stateProvider.state({
             name: "home",
             url: "/",

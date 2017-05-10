@@ -8,11 +8,26 @@
     display: flex;
     flex-direction: column;
     max-width: 30%;
+    height: auto;
     margin: 10px;
+}
+
+.levelCard .imageContainer{
+    position: relative;
 }
 
 .levelImage{
     width: 100%;
+    top: 0; 
+    left: 0;
+}
+
+.intial{
+    position: absolute;
+}
+
+.solution{
+    position: relative;
 }
 
 @media only screen and (max-width: 767px) {
