@@ -47,6 +47,9 @@ namespace ImageProcessor
                         if (_viewModel.IsPreviousEnabled)
                             _viewModel.Previous.Execute(null);
                         break;
+                    case Key.O:
+                        _viewModel.MoveToOther.Execute(null);
+                        break;
                 }
 
             };

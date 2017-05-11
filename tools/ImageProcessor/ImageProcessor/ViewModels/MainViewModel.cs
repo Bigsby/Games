@@ -142,9 +142,9 @@ namespace ImageProcessor.ViewModels
                 await LoadDriveComponents().ConfigureAwait(false);
             }).ConfigureAwait(false));
 
-        public ICommand Save => new ActionCommand("", async p => await SaveInternal(true, string.Empty));
+        public ICommand Save => new ActionCommand("", async p => await SaveInternal(true, true));
 
-        public ICommand SaveInitial => new ActionCommand("", async p => await SaveInternal(false, "i"));
+        public ICommand SaveInitial => new ActionCommand("", async p => await SaveInternal(false, false, "i"));
         #endregion
 
         #region Properties
@@ -211,13 +211,13 @@ namespace ImageProcessor.ViewModels
         #endregion
 
         #region Private Methods
-        private async Task SaveInternal(bool saveData, string imageSuffix)
+        private async Task SaveInternal(bool requireFlowsInput, bool saveData = false, string imageSuffix = "")
         {
             if (null == SelectedGame
                 || null == SelectedPack
                 || null == SelectedSection
                 || null == SelectedLevel
-                || !SelectedLevel.Flows.HasValue)
+                || (requireFlowsInput && !SelectedLevel.Flows.HasValue))
                 DispatcherInvoke(() => System.Windows.MessageBox.Show("Input not complete!", "Error", MessageBoxButton.OK, MessageBoxImage.Error));
             else
                 await DoWithProgress(async () =>
