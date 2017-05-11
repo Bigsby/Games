@@ -39,7 +39,11 @@
     .levelCard{
         display: flex;
         flex-direction: column;
-        max-width: 90%;
+        width: 90%;
         margin: 10px;
-    }   
+    }
+
+    .levelSolution{
+        width: 100%;
+    }
 }

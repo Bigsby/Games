@@ -142,73 +142,9 @@ namespace ImageProcessor.ViewModels
                 await LoadDriveComponents().ConfigureAwait(false);
             }).ConfigureAwait(false));
 
-        public ICommand Save => new ActionCommand("", async p =>
-        {
-            if (null == SelectedGame
-                || null == SelectedPack
-                || null == SelectedSection
-                || null == SelectedLevel
-                || !SelectedLevel.Flows.HasValue)
-                DispatcherInvoke(() => System.Windows.MessageBox.Show("Input not complete!", "Error", MessageBoxButton.OK, MessageBoxImage.Error));
-            else
-                await DoWithProgress(async () =>
-                {
-                    var targetFolder = Path.Combine(_baseFolder, _targetFolder, SelectedGame.Id, SelectedPack.Name, SelectedSection.Name);
-                    Directory.CreateDirectory(targetFolder);
-                    var targetPath = Path.Combine(targetFolder, $"{SelectedLevel.Number.ToString("D3")}.jpg");
-                    _croppedImage.Save(targetPath, ImageFormat.Jpeg);
+        public ICommand Save => new ActionCommand("", async p => await SaveInternal(true, string.Empty));
 
-                    SelectedLevel.IsSolved = true;
-                    var json = JsonConvert.SerializeObject(SelectedGame, _serializerSettings);
-                    var gameFilePath = Path.Combine(_baseFolder, _dataFolder, SelectedGame.Id + ".json");
-                    System.IO.File.Delete(gameFilePath);
-                    System.IO.File.WriteAllText(gameFilePath, json);
-
-                    var updateItem = new Item
-                    {
-                        ParentReference = new ItemReference
-                        {
-                            Id = _handledFolder.Id
-                        }
-                    };
-
-                    await _client.Drive.Items[_items.ElementAt(_currentIndex).Id].Request().UpdateAsync(updateItem).ConfigureAwait(false);
-                    await LoadDriveComponents().ConfigureAwait(false);
-                    SelectedLevel = NextLevel();
-                    //SetFlows();
-                }).ConfigureAwait(false);
-
-        });
-
-        public ICommand SaveInitial => new ActionCommand("", async p => 
-        {
-            if (null == SelectedGame
-               || null == SelectedPack
-               || null == SelectedSection
-               || null == SelectedLevel)
-                DispatcherInvoke(() => System.Windows.MessageBox.Show("Input not complete!", "Error", MessageBoxButton.OK, MessageBoxImage.Error));
-            else
-                await DoWithProgress(async () =>
-                {
-                    var targetFolder = Path.Combine(_baseFolder, _targetFolder, SelectedGame.Id, SelectedPack.Name, SelectedSection.Name);
-                    Directory.CreateDirectory(targetFolder);
-                    var targetPath = Path.Combine(targetFolder, $"{SelectedLevel.Number.ToString("D3")}i.jpg");
-                    _croppedImage.Save(targetPath, ImageFormat.Jpeg);
-
-                    var updateItem = new Item
-                    {
-                        ParentReference = new ItemReference
-                        {
-                            Id = _handledFolder.Id
-                        }
-                    };
-
-                    await _client.Drive.Items[_items.ElementAt(_currentIndex).Id].Request().UpdateAsync(updateItem).ConfigureAwait(false);
-                    await LoadDriveComponents().ConfigureAwait(false);
-                    SelectedLevel = NextLevel();
-
-                }).ConfigureAwait(false);
-        });
+        public ICommand SaveInitial => new ActionCommand("", async p => await SaveInternal(false, "i"));
         #endregion
 
         #region Properties
@@ -238,7 +174,83 @@ namespace ImageProcessor.ViewModels
         public IEnumerable<System.Windows.Media.Color> Colors { get => _mediaColors; set => SetAndRaise(ref _mediaColors, value); }
         #endregion
 
+        #region Public Methods
+        public void SelectNextLevel()
+        {
+            if (null == SelectedSection || null == SelectedLevel)
+                return;
+
+            var next = false;
+            foreach (var level in SelectedSection.Levels)
+            {
+                if (next)
+                {
+                    SelectedLevel = level;
+                    break;
+                }
+                next = level == SelectedLevel;
+            }
+        }
+
+        public void SelectPreviousLevel()
+        {
+            if (null == SelectedSection || null == SelectedLevel)
+                return;
+
+            Level current = null;
+            foreach (var level in SelectedSection.Levels)
+            {
+                if (level == SelectedLevel)
+                {
+                    SelectedLevel = current;
+                    break;
+                }
+                current = level;
+            }
+        }
+        #endregion
+
         #region Private Methods
+        private async Task SaveInternal(bool saveData, string imageSuffix)
+        {
+            if (null == SelectedGame
+                || null == SelectedPack
+                || null == SelectedSection
+                || null == SelectedLevel
+                || !SelectedLevel.Flows.HasValue)
+                DispatcherInvoke(() => System.Windows.MessageBox.Show("Input not complete!", "Error", MessageBoxButton.OK, MessageBoxImage.Error));
+            else
+                await DoWithProgress(async () =>
+                {
+                    var targetFolder = Path.Combine(_baseFolder, _targetFolder, SelectedGame.Id, SelectedPack.Name, SelectedSection.Name);
+                    Directory.CreateDirectory(targetFolder);
+                    var targetPath = Path.Combine(targetFolder, $"{SelectedLevel.Number.ToString("D3")}{imageSuffix}.jpg");
+                    _croppedImage.Save(targetPath, ImageFormat.Jpeg);
+
+                    if (saveData)
+                    {
+                        SelectedLevel.IsSolved = true;
+                        var json = JsonConvert.SerializeObject(SelectedGame, _serializerSettings);
+                        var gameFilePath = Path.Combine(_baseFolder, _dataFolder, SelectedGame.Id + ".json");
+                        System.IO.File.Delete(gameFilePath);
+                        System.IO.File.WriteAllText(gameFilePath, json);
+                    }
+
+                    var updateItem = new Item
+                    {
+                        ParentReference = new ItemReference
+                        {
+                            Id = _handledFolder.Id
+                        }
+                    };
+
+                    await _client.Drive.Items[_items.ElementAt(_currentIndex).Id].Request().UpdateAsync(updateItem).ConfigureAwait(false);
+                    await LoadDriveComponents().ConfigureAwait(false);
+                    SelectNextLevel();
+                    //SetFlows();
+                }).ConfigureAwait(false);
+        }
+
         private Item SelectRootFolder()
         {
             Item result = null;
@@ -370,17 +382,6 @@ namespace ImageProcessor.ViewModels
             }
 
             Games = result;
-        }
-
-        private Level NextLevel()
-        {
-            var next = false;
-            foreach (var level in SelectedSection.Levels)
-            {
-                if (next) return level;
-                next = level == SelectedLevel;
-            }
-            return null;
         }
 
         private void SetFlows()
