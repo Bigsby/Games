@@ -9,7 +9,6 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -22,9 +21,19 @@
                     <ComboBox ItemsSource="{Binding SelectedPack.Sections}" SelectedItem="{Binding SelectedSection, Mode=TwoWay}" DisplayMemberPath="Name" HorizontalAlignment="Stretch"/>
                     <ComboBox ItemsSource="{Binding SelectedSection.Levels}" SelectedItem="{Binding SelectedLevel, Mode=TwoWay}" DisplayMemberPath="Number" HorizontalAlignment="Stretch"/>
                     <Image Source="{Binding Solution, Mode=OneWay}" Stretch="Uniform" Margin="10"/>
+                    <ComboBox ItemsSource="{Binding Crops}" SelectedItem="{Binding SelectedCrop, Mode=TwoWay}" DisplayMemberPath="Name" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Image Source="{Binding Header, Mode=OneWay}" Stretch="Uniform" Margin="10"/>
+                    <TextBlock Text="Size"/>
+                    <TextBox Text="{Binding SelectedLevel.Size}"/>
+                    <TextBlock Text="Bridges"/>
+                    <TextBox Text="{Binding SelectedLevel.Bridges}"/>
+                    <TextBlock Text="Flows"/>
+                    <TextBox Text="{Binding SelectedLevel.Flows}"/>
                 </StackPanel>
 
-                <ItemsControl Grid.Row="2" ItemsSource="{Binding Colors}">
+                <ItemsControl Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Colors}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"/>

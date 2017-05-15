@@ -29,8 +29,10 @@ namespace UniversalFlowProcessor.ViewModels
         private Level _selectedLevel;
         private IEnumerable<Color> _colors;
         private ImageSource _solution;
+        private ImageSource _header;
         private IEnumerable<Crop> _crops;
         private Crop _selectedCrop;
+        private Stream _currentImageStream;
 
         public ProcessViewModel(Frame frame) : base(frame)
         {
@@ -61,6 +63,7 @@ namespace UniversalFlowProcessor.ViewModels
         public ImageSource Solution { get => _solution; set => SetAndRaise(ref _solution, value); }
         public IEnumerable<Crop> Crops { get => _crops; set => SetAndRaise(ref _crops, value); }
         public Crop SelectedCrop { get => _selectedCrop; set => SetAndRaise(ref _selectedCrop, value); }
+        public ImageSource Header { get => _header; set => SetAndRaise(ref _header, value); }
 
         public async Task Load()
         {
@@ -91,10 +94,8 @@ namespace UniversalFlowProcessor.ViewModels
             foreach (var game in gamesList)
             {
                 if (null != game.Colors)
-                {
-                    Colors = game.Colors.Select(c => (Color)XamlBindingHelper.ConvertValue(typeof(Color), "#" + c));
-                    //Colors = Colors.Select(c => System.Windows.Media.Color.FromArgb(c.A, c.R, c.G, c.B));
-                }
+                    Colors = game.Colors.Select(color => (Color)XamlBindingHelper.ConvertValue(typeof(Color), "#" + color));
+
                 var gameFile = await dataFolder.GetFileAsync(game.Id + ".json");
                 var gameJson = await FileIO.ReadTextAsync(gameFile);
                 result.Add(JsonConvert.DeserializeObject<Game>(gameJson));
@@ -109,40 +110,39 @@ namespace UniversalFlowProcessor.ViewModels
 
             using (var stream = await Engine.Client.Drive.Items[_items.ElementAt(_currentIndex).Id].Content.Request().GetAsync().ConfigureAwait(false))
             {
-                try
-                {
-                    var decoder = await BitmapDecoder.CreateAsync(stream.AsRandomAccessStream());
-                    var transform = new BitmapTransform();
-                    transform.Bounds = new BitmapBounds
-                    {
-                        X = 0,
-                        Y = SelectedCrop.Start,
-                        Height = Engine.ImageSize,
-                        Width = Engine.ImageSize
-                    };
-
-                    var pix = await decoder.GetPixelDataAsync(
-                        BitmapPixelFormat.Bgra8,
-                        BitmapAlphaMode.Straight,
-                        transform,
-                        ExifOrientationMode.IgnoreExifOrientation,
-                        ColorManagementMode.ColorManageToSRgb);
-
-                    var pixels = pix.DetachPixelData();
-
-                    await DispatcherInvoke(() =>
-                    {
-                        var cropBmp = new WriteableBitmap(Engine.ImageSize, Engine.ImageSize);
-                        var pixStream = cropBmp.PixelBuffer.AsStream();
-                        pixStream.Write(pixels, 0, Engine.ImageSize * Engine.ImageSize * 4);
-                        Solution = cropBmp;
-                    }).ConfigureAwait(false);
-                }
-                catch (Exception ex)
-                {
-                    var a = ex.Message;
-                }
+                Solution = await (await DispatcherInvoke(() => CropImage(stream, 0, SelectedCrop.Start, Engine.ImageSize, Engine.ImageSize)).ConfigureAwait(false)).ConfigureAwait(false);
+                Header = await (await DispatcherInvoke(() => CropImage(stream, 0, 0, Engine.ImageSize, (int)SelectedCrop.Start)).ConfigureAwait(false)).ConfigureAwait(false);
             }
+        }
+
+        private async Task<ImageSource> CropImage(Stream stream, uint startX, uint startY, int width, int height)
+        {
+            var decoder = await BitmapDecoder.CreateAsync(stream.AsRandomAccessStream());
+            var transform = new BitmapTransform
+            {
+                Bounds = new BitmapBounds
+                {
+                    X = startX,
+                    Y = startY,
+                    Height = (uint)height,
+                    Width = (uint)width,
+                }
+            };
+
+            var pix = await decoder.GetPixelDataAsync(
+                BitmapPixelFormat.Bgra8,
+                BitmapAlphaMode.Straight,
+                transform,
+                ExifOrientationMode.IgnoreExifOrientation,
+                ColorManagementMode.ColorManageToSRgb);
+
+            var pixels = pix.DetachPixelData();
+
+
+            var cropBmp = new WriteableBitmap(width, height);
+            var pixStream = cropBmp.PixelBuffer.AsStream();
+            pixStream.Write(pixels, 0, width * height * 4);
+            return cropBmp;
         }
     }
 }

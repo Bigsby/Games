@@ -38,10 +38,14 @@ namespace UniversalFlowProcessor.ViewModels
 
         protected async Task<T> DispatcherInvoke<T>(Func<T> func)
         {
-            var result = default(T);
-            await Frame.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => result = func());
-            return result;
+            var tcs = new TaskCompletionSource<T>();
+            var task = tcs.Task;
+
+            await DispatcherInvoke(() => tcs.SetResult(func())).ConfigureAwait(false);
+
+            return task.Result;
         }
+
         public bool IsWorking { get => _working; set => SetAndRaise(ref _working, value); }
         public bool NotWorking { get => _notWorking; set => SetAndRaise(ref _notWorking, value); }
 
