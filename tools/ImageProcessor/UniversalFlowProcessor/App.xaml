@@ -2,7 +2,9 @@
     x:Class="UniversalFlowProcessor.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UniversalFlowProcessor"
-    RequestedTheme="Light">
-
+    RequestedTheme="Dark">
+    <Application.Resources>
+        <x:String x:Key="ids:ClientID">b413282d-6896-4f3f-88a0-ec5f01cf217f</x:String>
+        <x:String x:Key="ids:ReturnUrl">msalb413282d-6896-4f3f-88a0-ec5f01cf217f://auth</x:String>
+    </Application.Resources>
 </Application>

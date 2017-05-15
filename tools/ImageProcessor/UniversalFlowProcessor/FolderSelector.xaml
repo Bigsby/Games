@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="UniversalFlowProcessor.FolderSelector"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="TheControl">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Path}"/>
+        <Button Grid.Row="1" IsEnabled="{Binding IsBackEnabled}" HorizontalAlignment="Stretch" Content="Parent Folder" Command="{Binding Back}"/>
+        <ListView x:Name="FolderList" Grid.Row="2" ItemsSource="{Binding Folders}" IsEnabled="{Binding NotWorking}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Inlines>
+                            <Run Text="{Binding Name}"/>
+                            <Run Text=" ("/>
+                            <Run Text="{Binding Folder.ChildCount}"/>
+                            <Run Text=")"/>
+                        </TextBlock.Inlines>
+                    </TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Grid.Row="3" HorizontalAlignment="Stretch" Content="Select" Command="{Binding Select}" IsEnabled="{Binding NotWorking}"/>
+        <ProgressRing IsActive="{Binding IsWorking}" Height="100" Width="100" Grid.RowSpan="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</Page>

@@ -1,0 +1,12 @@
+https://github.com/microsoftgraph/uwp-csharp-connect-rest-sample
+
+https://github.com/OneDrive/onedrive-sdk-dotnet-msa-auth-adapter
+
+https://github.com/Azure-Samples/active-directory-xamarin-native-v2
+
+https://msdn.microsoft.com/en-us/magazine/mt632271.aspx
+
+http://stackoverflow.com/questions/36760980/the-application-requesting-authentication-tokens-is-either-disabled-or-incorrect
+
+https://developer.microsoft.com
+https://apps.dev.microsoft.com

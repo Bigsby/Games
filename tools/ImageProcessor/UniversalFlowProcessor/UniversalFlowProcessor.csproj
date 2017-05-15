@@ -17,7 +17,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-    <PackageCertificateKeyFile>UniversalFlowProcessor_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>UniversalFlowProcessor_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>C200EA9A3926FAF94E19912C427D3DF9E9010E7D</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -95,18 +96,31 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FolderSelector.xaml.cs">
+      <DependentUpon>FolderSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProcessPage.xaml.cs">
+      <DependentUpon>ProcessPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\DataModels.cs" />
+    <Compile Include="ViewModels\Engine.cs" />
+    <Compile Include="ViewModels\FolderViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MVVM.cs" />
+    <Compile Include="ViewModels\ProcessViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="UniversalFlowProcessor_TemporaryKey.pfx" />
+    <None Include="UniversalFlowProcessor_StoreKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -121,14 +135,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="FolderSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>5.2.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.OneDriveSDK">
+      <Version>2.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.OneDriveSDK.Authentication">
+      <Version>1.0.8</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.2</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
