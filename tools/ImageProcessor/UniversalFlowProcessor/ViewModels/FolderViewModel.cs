@@ -15,6 +15,8 @@ namespace UniversalFlowProcessor.ViewModels
         private bool _isBackEnabled = false;
         private Item _current;
         private string _path;
+        private const string _handledFolderPath = "Pictures/Screenshots/Handled";
+        private const string _otherFolderPath = "Pictures/Screenshots/Other";
 
         public FolderViewModel(Frame frame) : base(frame)
         {
@@ -71,17 +73,16 @@ namespace UniversalFlowProcessor.ViewModels
              DoWithProgress(async () =>
              {
                  var folderPicker = new Windows.Storage.Pickers.FolderPicker();
-                 folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.Desktop;
+                 folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
                  folderPicker.FileTypeFilter.Add("*");
                  var folder = await folderPicker.PickSingleFolderAsync();
                  if (null == folder)
                      return;
-                 Engine.Target = folder;
-
+                 Engine.BaseFolder = folder;
+                 Engine.HandledFolder = await _client.Drive.Root.ItemWithPath(_handledFolderPath).Request().GetAsync().ConfigureAwait(false);
+                 Engine.OthersFolder = await _client.Drive.Root.ItemWithPath(_otherFolderPath).Request().GetAsync().ConfigureAwait(false);
+                 await Navigate(typeof(ProcessPage)).ConfigureAwait(false);
              }).ConfigureAwait(false);
-         });//ItemSelected?.Invoke(Current));
-
-        public event ItemSelectedEvent ItemSelected;
-        public delegate void ItemSelectedEvent(Item item);
+         });
     }
 }

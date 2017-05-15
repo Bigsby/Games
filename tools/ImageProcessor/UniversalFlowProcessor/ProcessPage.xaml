@@ -1,13 +1,47 @@
 ﻿<Page
     x:Class="UniversalFlowProcessor.ProcessPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UniversalFlowProcessor"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:Name="Main">
+        <ContentControl IsEnabled="{Binding NotWorking}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <Grid HorizontalAlignment="Stretch" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <ComboBox ItemsSource="{Binding Games}" SelectedItem="{Binding SelectedGame, Mode=TwoWay}" DisplayMemberPath="Name" HorizontalAlignment="Stretch"/>
+                    <ComboBox ItemsSource="{Binding SelectedGame.Packs}" SelectedItem="{Binding SelectedPack, Mode=TwoWay}" DisplayMemberPath="Name" HorizontalAlignment="Stretch"/>
+                    <ComboBox ItemsSource="{Binding SelectedPack.Sections}" SelectedItem="{Binding SelectedSection, Mode=TwoWay}" DisplayMemberPath="Name" HorizontalAlignment="Stretch"/>
+                    <ComboBox ItemsSource="{Binding SelectedSection.Levels}" SelectedItem="{Binding SelectedLevel, Mode=TwoWay}" DisplayMemberPath="Number" HorizontalAlignment="Stretch"/>
+                    <Image Source="{Binding Solution, Mode=OneWay}" Stretch="Uniform" Margin="10"/>
+                </StackPanel>
 
+                <ItemsControl Grid.Row="2" ItemsSource="{Binding Colors}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Rectangle Height="30" Width="30">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush Color="{Binding}"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </ContentControl>
+        <ProgressRing IsActive="{Binding IsWorking}" Height="100" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </Page>

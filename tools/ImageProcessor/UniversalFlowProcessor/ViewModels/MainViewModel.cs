@@ -22,7 +22,7 @@ namespace UniversalFlowProcessor.ViewModels
                     return;
 
                 Engine.Client = new OneDriveClient("https://api.onedrive.com/v1.0", authenticator);
-                await DispatcherInvoke(() => Frame.Navigate(typeof(FolderSelector)));
+                await Navigate(typeof(FolderSelector)).ConfigureAwait(false);
             });
         });
     }

@@ -10,3 +10,6 @@ http://stackoverflow.com/questions/36760980/the-application-requesting-authentic
 
 https://developer.microsoft.com
 https://apps.dev.microsoft.com
+
+How To Crop an Image in UWP
+https://code.msdn.microsoft.com/windowsapps/CSWin8AppCropBitmap-52fa1ad7

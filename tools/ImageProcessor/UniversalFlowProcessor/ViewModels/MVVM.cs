@@ -26,6 +26,11 @@ namespace UniversalFlowProcessor.ViewModels
             await Frame.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => base.RaisePropertyChangedInternal(propertyName));
         }
 
+        protected async Task Navigate(Type pageType)
+        {
+            await DispatcherInvoke(() => Frame.Navigate(pageType));
+        }
+
         protected async Task DispatcherInvoke(DispatchedHandler action)
         {
             await Frame.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, action);

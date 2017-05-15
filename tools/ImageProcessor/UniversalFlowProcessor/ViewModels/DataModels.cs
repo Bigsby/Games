@@ -56,6 +56,6 @@ namespace UniversalFlowProcessor.ViewModels
     public struct Crop
     {
         public string Name { get; set; }
-        public int Start { get; set; }
+        public uint Start { get; set; }
     }
 }
