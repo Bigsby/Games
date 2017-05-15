@@ -13,11 +13,13 @@ using Windows.UI.Xaml.Markup;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Windows.Input;
 
 namespace UniversalFlowProcessor.ViewModels
 {
     class ProcessViewModel : FrameObservableObject
     {
+        #region Private Fields
         private IEnumerable<Item> _items;
         private int _currentIndex;
         private bool _isPreviousEnabled;
@@ -32,7 +34,8 @@ namespace UniversalFlowProcessor.ViewModels
         private ImageSource _header;
         private IEnumerable<Crop> _crops;
         private Crop _selectedCrop;
-        private Stream _currentImageStream;
+        private ImageSource _currentImageStream;
+        #endregion
 
         public ProcessViewModel(Frame frame) : base(frame)
         {
@@ -52,6 +55,7 @@ namespace UniversalFlowProcessor.ViewModels
             SelectedCrop = _crops.ElementAt(0);
         }
 
+        #region Properties
         public bool IsPreviousEnabled { get => _isPreviousEnabled; set => SetAndRaise(ref _isPreviousEnabled, value); }
         public bool IsNextEnabled { get => _isNextEnabled; set => SetAndRaise(ref _isNextEnabled, value); }
         public IEnumerable<Game> Games { get => _games; set => SetAndRaise(ref _games, value); }
@@ -64,7 +68,67 @@ namespace UniversalFlowProcessor.ViewModels
         public IEnumerable<Crop> Crops { get => _crops; set => SetAndRaise(ref _crops, value); }
         public Crop SelectedCrop { get => _selectedCrop; set => SetAndRaise(ref _selectedCrop, value); }
         public ImageSource Header { get => _header; set => SetAndRaise(ref _header, value); }
+        #endregion
 
+        #region Commands
+        public ICommand NextImage => new ActionCommand("", async p =>
+            await DoWithProgress(async () =>
+            {
+                if (_currentIndex < _items?.Count())
+                {
+                    _currentIndex++;
+                    await ProcessImages().ConfigureAwait(false);
+                    IsNextEnabled = _currentIndex < _items?.Count() - 1;
+                    IsPreviousEnabled = true;
+                };
+            }).ConfigureAwait(false));
+
+        public ICommand PreviousImage => new ActionCommand("", async p =>
+           await DoWithProgress(async () =>
+           {
+               if (_currentIndex != 0)
+               {
+                   _currentIndex--;
+                   await ProcessImages().ConfigureAwait(false);
+                   IsPreviousEnabled = _currentIndex > 0;
+                   IsNextEnabled = true;
+               }
+           }).ConfigureAwait(false));
+
+        public ICommand SaveSolution => new ActionCommand("", async p =>
+        {
+            await DoWithProgress(async () =>
+            {
+                //if (null == SelectedLevel || !SelectedLevel.Flows.HasValue)
+                //{
+                //    Error?.Invoke("Input incomplete!");
+                //    return;
+                //}
+
+                var imagesFolder = await Engine.ImagesFolder();
+                var targetFile = await (await Engine.ImagesFolder()).CreateFileAsync("test.jpg", CreationCollisionOption.ReplaceExisting);
+
+                using (var saveStream = await targetFile.OpenAsync(FileAccessMode.ReadWrite))
+                {
+                    var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, saveStream);
+                    var writeableBitmap = _currentImageStream as WriteableBitmap;
+                    using (var pixelStream = writeableBitmap.PixelBuffer.AsStream())
+                    {
+                        var pixels = new byte[pixelStream.Length];
+                        await pixelStream.ReadAsync(pixels, 0, pixels.Length).ConfigureAwait(false);
+                        encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Ignore, (uint)writeableBitmap.PixelWidth, (uint)writeableBitmap.PixelHeight, 96.0, 96.0, pixels);
+                        await encoder.FlushAsync();
+                    }
+                }
+
+            }).ConfigureAwait(false);
+        });
+
+        public ICommand SaveData => new ActionCommand("", p => { });
+        public ICommand SaveInitial => new ActionCommand("", p => { });
+        public ICommand MoveToOther => new ActionCommand("", p => { });
+
+        #endregion
         public async Task Load()
         {
             await DoWithProgress(async () =>
@@ -81,6 +145,7 @@ namespace UniversalFlowProcessor.ViewModels
             }).ConfigureAwait(false);
         }
 
+        #region Private Methods
         private async Task LoadData()
         {
             var dataFolder = await Engine.DataFolder().ConfigureAwait(false);
@@ -110,7 +175,7 @@ namespace UniversalFlowProcessor.ViewModels
 
             using (var stream = await Engine.Client.Drive.Items[_items.ElementAt(_currentIndex).Id].Content.Request().GetAsync().ConfigureAwait(false))
             {
-                Solution = await (await DispatcherInvoke(() => CropImage(stream, 0, SelectedCrop.Start, Engine.ImageSize, Engine.ImageSize)).ConfigureAwait(false)).ConfigureAwait(false);
+                Solution = _currentImageStream = await (await DispatcherInvoke(() => CropImage(stream, 0, SelectedCrop.Start, Engine.ImageSize, Engine.ImageSize)).ConfigureAwait(false)).ConfigureAwait(false);
                 Header = await (await DispatcherInvoke(() => CropImage(stream, 0, 0, Engine.ImageSize, (int)SelectedCrop.Start)).ConfigureAwait(false)).ConfigureAwait(false);
             }
         }
@@ -144,5 +209,9 @@ namespace UniversalFlowProcessor.ViewModels
             pixStream.Write(pixels, 0, width * height * 4);
             return cropBmp;
         }
+
+        public delegate void ErrorEvent(string messsage);
+        public event ErrorEvent Error;
+        #endregion
     }
 }
