@@ -3,6 +3,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+    </Page.Resources>
     <Grid x:Name="Main">
         <ContentControl IsEnabled="{Binding NotWorking}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
             <Grid HorizontalAlignment="Stretch" >
@@ -31,8 +37,12 @@
                     <TextBox Text="{Binding SelectedLevel.Bridges}"/>
                     <TextBlock Text="Flows"/>
                     <TextBox Text="{Binding SelectedLevel.Flows}"/>
+                    <Button Content="Save Solution" Command="{Binding SaveSolution}"/>
+                    <Button Content="Save Intial" Command="{Binding SaveInitial}"/>
+                    <Button Content="Move to Other" Command="{Binding MoveToOther}"/>
                 </StackPanel>
-
+                <Button Grid.Row="1" Content="Previous" Command="{Binding PreviousImage}"/>
+                <Button Grid.Row="1" Grid.Column="1" Content="Next" Command="{Binding NextImage}"/>
                 <ItemsControl Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Colors}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
