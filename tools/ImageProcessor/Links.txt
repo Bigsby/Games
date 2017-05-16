@@ -15,3 +15,5 @@ How To Crop an Image in UWP
 https://code.msdn.microsoft.com/windowsapps/CSWin8AppCropBitmap-52fa1ad7
 
 https://docs.microsoft.com/en-us/windows/uwp/data-binding/data-binding-in-depth
+
+https://code.msdn.microsoft.com/windowsapps/How-to-save-WriteableBitmap-bd23d455
