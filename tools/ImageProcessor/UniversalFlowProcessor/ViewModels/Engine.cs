@@ -9,6 +9,7 @@ namespace UniversalFlowProcessor.ViewModels
     {
         public static OneDriveClient Client;
         public const int ImageSize = 720;
+        public const double DPIs = 240;
         public static Item Source;
         public static Item OthersFolder;
         public static Item HandledFolder;

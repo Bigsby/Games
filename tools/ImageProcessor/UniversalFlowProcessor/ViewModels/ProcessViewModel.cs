@@ -110,13 +110,21 @@ namespace UniversalFlowProcessor.ViewModels
 
                 using (var saveStream = await targetFile.OpenAsync(FileAccessMode.ReadWrite))
                 {
-                    var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, saveStream);
+                    var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegXREncoderId, saveStream);
                     var writeableBitmap = _currentImageStream as WriteableBitmap;
+                    
                     using (var pixelStream = writeableBitmap.PixelBuffer.AsStream())
                     {
                         var pixels = new byte[pixelStream.Length];
                         await pixelStream.ReadAsync(pixels, 0, pixels.Length).ConfigureAwait(false);
-                        encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Ignore, (uint)writeableBitmap.PixelWidth, (uint)writeableBitmap.PixelHeight, 96.0, 96.0, pixels);
+                        encoder.SetPixelData(
+                            BitmapPixelFormat.Rgba8, 
+                            BitmapAlphaMode.Ignore, 
+                            (uint)writeableBitmap.PixelWidth, 
+                            (uint)writeableBitmap.PixelHeight, 
+                            Engine.DPIs, 
+                            Engine.DPIs, 
+                            pixels);
                         await encoder.FlushAsync();
                     }
                 }
